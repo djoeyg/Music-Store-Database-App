@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,8 +24,10 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-link, .App-linka:visited {
+  /*color: #61dafb;*/
+  color: white;
+  margin-top: .75em;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +37,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.body {
+  height: 100vh;
+  background-color: #13b5ca;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.table, thead {
+  table-layout:auto;
+  border-collapse: collapse;
+  border: 1px solid white;
+  align-self: center;
+  text-align: center;
+  min-height: 1.5em;
+  width: 100vh;
+}
+
+tr {
+  table-layout: auto;
+  border: 1px solid white;
+  align-self: center;
+  text-align: center;
+  min-height: 1.5em;
+  min-width: 1.5em;
+}
+
+td {
+  border: 1px solid white;
+  white-space: nowrap;
+}
+
+th {
+  border: 1px solid white;
+  color: white;
+  background-color: rgb(30, 133, 202);
+}
+
+.fieldset {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(30, 133, 202);
+}
+
+.form {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(30, 133, 202);
+}
+
+.input {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+  font-size: .6em;
+  font-weight: bold;
+  padding-top: .2em;
+}
+
+.button {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+  font-size: .8em;
+  padding: .3em;
 }
