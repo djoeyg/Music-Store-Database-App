@@ -1,5 +1,6 @@
 import '../App.css';
 import Customer from './customer.js';
+import AddNewCustomer from '../components/addCustomer';
 import React from 'react';
 
 function AllCustomersList({ customersInfo }) {
@@ -18,6 +19,7 @@ function AllCustomersList({ customersInfo }) {
               {customersInfo.map((customerData, i) => <Customer custInfo={customerData} key={i} />)}
           </tbody>
         </table> 
+        <AddNewCustomer></AddNewCustomer>
       </> 
     );
 }

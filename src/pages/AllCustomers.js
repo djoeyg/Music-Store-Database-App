@@ -10,6 +10,7 @@ function AllCustomers() {
     <div className="body">
         <h2>All Registered Customers</h2>
         <div className="App-header">
+            <br></br>
             <AllCustomersList customersInfo={allCustomers}></AllCustomersList>
         </div>
         <Link className="App-link" to="/">Return to Home</Link>
