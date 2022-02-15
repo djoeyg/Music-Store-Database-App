@@ -1,5 +1,6 @@
 import '../App.css';
 import AvailableTrack from './availableTrack.js';
+import AddNewTrack from '../components/addTrack';
 import React from 'react';
 
 function AllTracksList({ availableTracks }) {
@@ -18,7 +19,8 @@ function AllTracksList({ availableTracks }) {
           <tbody>
               {availableTracks.map((availableTrack, i) => <AvailableTrack aTrack={availableTrack} key={i} />)}
           </tbody>
-        </table> 
+        </table>
+        <AddNewTrack></AddNewTrack> 
       </> 
     );
 }
