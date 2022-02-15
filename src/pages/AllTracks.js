@@ -10,6 +10,7 @@ function AllTracks() {
     <div className="body">
         <h2>All Available Music Tracks</h2>
         <div className="App-header">
+            <br></br>
             <AllTracksList availableTracks={allTracks}></AllTracksList>
         </div>
         <Link className="App-link" to="/">Return to Home</Link>
