@@ -5,7 +5,7 @@ import AllTracksList from '../components/allTracksList';
 import AddNewTrack from '../components/addTrack';
 import React from 'react';
 
-function AllTracks() {
+function Purchases() {
   return (
     <>
     <div className="body">
@@ -21,4 +21,4 @@ function AllTracks() {
   );
 }
 
-export default AllTracks;
+export default Purchases;

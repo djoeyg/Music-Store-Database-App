@@ -1,9 +1,8 @@
 import '../App.css';
 import Customer from './customer.js';
-import AddNewCustomer from '../components/addCustomer';
 import React from 'react';
 
-function AllCustomersList({ customersInfo }) {
+function AllCustomersList({ customersInfo, onUpdate }) {
     return (
       <>  
         <table className="table">
@@ -13,13 +12,16 @@ function AllCustomersList({ customersInfo }) {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
+              <th>Update Info</th>
             </tr>
           </thead>
           <tbody>
-              {customersInfo.map((customerData, i) => <Customer custInfo={customerData} key={i} />)}
+              {customersInfo.map((customerData, i) => <Customer 
+                  custInfo={customerData} 
+                  onUpdate={onUpdate} 
+                  key={i} />)}
           </tbody>
         </table> 
-        <AddNewCustomer></AddNewCustomer>
       </> 
     );
 }

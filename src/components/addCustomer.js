@@ -25,7 +25,6 @@ function AddNewCustomer() {
     return (
         <div>
             <h4>Insert New Customer Information</h4>
-            <p>Make entries for each field below.</p>
             <input
                 type="text"
                 value={firstName}

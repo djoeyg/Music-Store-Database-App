@@ -3,20 +3,23 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
+/* <Link className="App-link" to="/user-library">See Your Music Collection Here</Link> 
+   <Link className="App-link" to="/order-tracks">Download &amp; Purchase Tracks Here</Link>
+*/
 
 function HomePage() {
     return(
       <>  
-            <header className="body">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Welcome to Dave &amp; Margaux's Online Music Tracks Store!
-            </p>
-            <Link className="App-link" to="/all-customers">View All Customers Here</Link>
-            <Link className="App-link" to="/user-library">See Your Music Collection Here</Link>
-            <Link className="App-link" to="/all-tracks">See All Available Music Tracks Here</Link>
-            <Link className="App-link" to="/order-tracks">Download &amp; Purchase Tracks Here</Link>
-            </header>   
+        <div className="body">
+          <h2>Dave &amp; Margaux's Online Music Tracks Store<br></br>Database Administrator's App</h2>
+          <br></br>
+          <img src={logo} className="App-logo" alt="logo" />
+          <br></br>
+          <Link className="App-link" to="/all-customers">Go to Customers Data</Link>
+          <Link className="App-link" to="/all-tracks">Go to Music Tracks</Link>
+          <Link className="App-link" to="/orders">Go to Orders Data</Link>
+          <Link className="App-link" to="/purchases">Go to Purchases Data</Link>
+        </div>   
       </>
     )
 }

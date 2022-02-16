@@ -6,12 +6,6 @@ function AddNewTrack() {
     const [trackLength, setTrackLength] = useState('')
     const [releaseDate, setReleaseDate] = useState('');
 
-    /*trackID}</td>
-              <td>{aTrack.trackTitle}</td>
-              <td>{aTrack.trackLength}</td>
-              <td>{aTrack.releaseDate*/
-
-
     const addTrack = async () => {
         /*const newRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch('/recipes', {
@@ -31,7 +25,6 @@ function AddNewTrack() {
     return (
         <div>
             <h4>Insert New Track Information</h4>
-            <p>Make entries for each field below.</p>
             <input
                 type="text"
                 value={trackTitle}
