@@ -1,8 +1,11 @@
 import '../App.css';
 import React from 'react';
 import { AiFillEdit } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
-function Customer({ custInfo, onUpdate }) {
+/*<td><AiFillEdit onClick={() => onView(custInfo)}/></td>*/
+
+function Customer({ custInfo, onUpdate, onView }) {
     return (
         <>
           <tr>
@@ -11,6 +14,7 @@ function Customer({ custInfo, onUpdate }) {
               <td>{custInfo.lastName}</td>
               <td>{custInfo.email}</td>
               <td><AiFillEdit onClick={() => onUpdate(custInfo)}/></td>
+              <td><Link className="App-link" onClick={() => onView(custInfo)} to="user-library">View Tracks</Link></td>
           </tr>
       </>
     );

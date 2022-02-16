@@ -42,7 +42,8 @@ function OrderForm() {
                 </button>
                 <br></br>
             </div>
-        <Link className="App-link" to="/">Return to Home</Link>
+        <Link className="App-link" to="/all-tracks">Return to Tracks</Link>
+        <Link className="App-link" to="/">Return to Home Page</Link>
     </div>
     </>
   );

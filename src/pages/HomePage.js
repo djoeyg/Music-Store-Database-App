@@ -15,10 +15,10 @@ function HomePage() {
           <br></br>
           <img src={logo} className="App-logo" alt="logo" />
           <br></br>
-          <Link className="App-link" to="/all-customers">Go to Customers Data</Link>
-          <Link className="App-link" to="/all-tracks">Go to Music Tracks</Link>
-          <Link className="App-link" to="/orders">Go to Orders Data</Link>
-          <Link className="App-link" to="/purchases">Go to Purchases Data</Link>
+          <Link className="App-link" to="/all-customers">Customers Data</Link>
+          <Link className="App-link" to="/all-tracks">Music Tracks</Link>
+          <Link className="App-link" to="/orders">Orders Data</Link>
+          <Link className="App-link" to="/purchases">Purchases Data</Link>
         </div>   
       </>
     )

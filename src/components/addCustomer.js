@@ -45,7 +45,7 @@ function AddNewCustomer() {
             
             <button
                 onClick={addCustomer}
-            >Add to Customers List</button>
+            >Add to Customers</button>
             <br></br><br></br>
         </div>
     );

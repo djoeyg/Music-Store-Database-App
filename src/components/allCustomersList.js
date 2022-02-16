@@ -2,7 +2,7 @@ import '../App.css';
 import Customer from './customer.js';
 import React from 'react';
 
-function AllCustomersList({ customersInfo, onUpdate }) {
+function AllCustomersList({ customersInfo, onUpdate, onView }) {
     return (
       <>  
         <table className="table">
@@ -13,12 +13,14 @@ function AllCustomersList({ customersInfo, onUpdate }) {
               <th>Last Name</th>
               <th>Email</th>
               <th>Update Info</th>
+              <th>Customer Play List</th>
             </tr>
           </thead>
           <tbody>
               {customersInfo.map((customerData, i) => <Customer 
                   custInfo={customerData} 
-                  onUpdate={onUpdate} 
+                  onUpdate={onUpdate}
+                  onView={onView} 
                   key={i} />)}
           </tbody>
         </table> 

@@ -4,15 +4,21 @@ import customerTracks from '../data/customerTracksData.js';
 import CustomerPlayList from '../components/customerPlayList';
 import React from 'react';
 
-function UserLibrary() {
+function UserLibrary({ customerToView }) {
+
+  const idNum = customerToView.customerID - 1;
+  const fName = customerToView.firstName;
+  const lName = customerToView.lastName;
+
   return (
     <>
     <div className="body">
-        <h2>Your Music Tracks Library</h2>
+        <h2>{fName} {lName}'s Music Tracks Library</h2>
         <div className="App-header">
-            <CustomerPlayList playListTracks={customerTracks}></CustomerPlayList>
+            <CustomerPlayList playListTracks={customerTracks[idNum]}></CustomerPlayList>
         </div>
-        <Link className="App-link" to="/">Return to Home</Link>
+        <Link className="App-link" to="/all-customers">Return to Customers List</Link>
+        <Link className="App-link" to="/">Return to Home Page</Link>
     </div>
     </>
   );

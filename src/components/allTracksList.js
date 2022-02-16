@@ -2,7 +2,7 @@ import '../App.css';
 import AvailableTrack from './availableTrack.js';
 import React from 'react';
 
-function AllTracksList({ availableTracks }) {
+function AllTracksList({ availableTracks, onEdit }) {
     return (
       <>  
         <table className="table">
@@ -12,11 +12,16 @@ function AllTracksList({ availableTracks }) {
               <th>Track Title</th>
               <th>Length</th>
               <th>Release Date</th>
+              <th>Edit Info</th>
               <th>Purchase Track</th>
+              <th>Delete Track?</th>
             </tr>
           </thead>
           <tbody>
-              {availableTracks.map((availableTrack, i) => <AvailableTrack aTrack={availableTrack} key={i} />)}
+              {availableTracks.map((availableTrack, i) => <AvailableTrack 
+                  aTrack={availableTrack}
+                  onEdit={onEdit} 
+                  key={i} />)}
           </tbody>
         </table> 
       </> 

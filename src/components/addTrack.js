@@ -24,7 +24,7 @@ function AddNewTrack() {
 
     return (
         <div>
-            <h4>Insert New Track Information</h4>
+            <h4>Insert Information for New Track </h4>
             <input
                 type="text"
                 value={trackTitle}
@@ -45,7 +45,7 @@ function AddNewTrack() {
             
             <button
                 onClick={addTrack}
-            >Add to Tracks List</button>
+            >Add to Tracks</button>
             <br></br><br></br>
         </div>
     );
