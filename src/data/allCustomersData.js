@@ -16,7 +16,7 @@ const allCustomers = [
       email: 'hutchima@oregonstate.edu', 
       street: '1234 Some Rd.', 
       city: 'Someplace',
-      state: 'NULL',
+      state: 'NA',
       zipCode: '12345',
       phone: '555-123-4567',
       ipAddress: '192.168.1.8'},

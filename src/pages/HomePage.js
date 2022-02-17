@@ -9,7 +9,9 @@ function HomePage() {
         <NavBar></NavBar>
         <div className="body">  
         
-          <h2>Dave &amp; Margaux's Online Music Tracks Store<br></br>Database Administrator's App</h2>
+          <h2>
+            Dave &amp; Margaux's Online Music Tracks Store
+            <br></br><br></br>Database Administrator's App</h2>
           <br></br><br></br>
           <img src={logo} className="App-logo" alt="logo" />
           <br></br><br></br>

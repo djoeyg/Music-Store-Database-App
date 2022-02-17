@@ -21,6 +21,11 @@ function AllTracks({ setTrackToEdit}) {
     <div className="body">
       <h2>All Available Music Tracks</h2>
         <div className="App-header">
+          <p>Search Track by ID#</p>
+            <span>
+              <input type="text" placeholder="Track ID#" />   
+              <button onClick={e => e.preventDefault()}>Search</button>
+            </span>
             <AddNewTrack></AddNewTrack>
             <AllTracksList availableTracks={allTracks} onEdit={onEdit} ></AllTracksList>
             <br></br>

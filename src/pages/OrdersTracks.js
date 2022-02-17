@@ -1,6 +1,7 @@
 import '../App.css';
 import '../layout.css'
 import NavBar from '../components/navBarLinks';
+import AddNewOrderedTrack from '../components/addOrderedTrack';
 import React from 'react';
 
 function OrdersTracks() {
@@ -10,9 +11,16 @@ function OrdersTracks() {
           <div className="body">
             <h2>Orders/Tracks Composite Table</h2>
               <div className="App-header">
+              <p>Search Ordered Tracks by ID#</p>
+                <span>
+                  <input type="text" placeholder="Ordered Track ID#" />   
+                  <button onClick={e => e.preventDefault()}>Search</button>
+                </span>
+                  <AddNewOrderedTrack></AddNewOrderedTrack>
                 <table className="table">
                   <thead>
                     <tr> 
+                      <th>O/Tr ID#</th>  
                       <th>Order ID#</th>
                       <th>Order Complete</th>
                       <th>Date &amp; Time</th>
@@ -26,6 +34,7 @@ function OrdersTracks() {
                   </thead>
                 <tbody>
                     <tr>
+                      <td>1</td>  
                       <td>1</td>
                       <td>True</td>
                       <td>2022-01-30 14:30:00</td>
@@ -37,6 +46,7 @@ function OrdersTracks() {
                       <td>2008-06-16</td>
                     </tr> 
                     <tr>
+                      <td>2</td>  
                       <td>2</td>
                       <td>True</td>
                       <td>2022-02-01 09:45:00</td>
@@ -49,6 +59,7 @@ function OrdersTracks() {
                     </tr>
                     <tr>
                       <td>3</td>
+                      <td>3</td>
                       <td>True</td>
                       <td>2022-02-04 11:15:00</td>
                       <td>1</td>
@@ -59,6 +70,7 @@ function OrdersTracks() {
                       <td>2010-07-07</td>
                     </tr>
                     <tr>
+                      <td>4</td>
                       <td>4</td>
                       <td>False</td>
                       <td>2022-02-11 17:00:00</td>
@@ -71,6 +83,7 @@ function OrdersTracks() {
                     </tr>            
                   </tbody>
                 </table>
+                <br></br>
               </div>
             </div> 
       </>

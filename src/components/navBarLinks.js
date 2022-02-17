@@ -10,7 +10,7 @@ function NavBar() {
             
           </div>
           <div className="box box2">
-            <Link className="App-link" to="/">Home</Link>
+            <Link className="App-link" to="/">Home Page</Link>
           </div>
           <div className="box box3">
             <Link className="App-link" to="/all-customers">Customers</Link>

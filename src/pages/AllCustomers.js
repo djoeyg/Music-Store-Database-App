@@ -26,9 +26,14 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
     <div className="body">
         <h2>All Registered Customers</h2>
         <div className="App-header">
-            <AddNewCustomer></AddNewCustomer>
-            <AllCustomersList customersInfo={allCustomers} onUpdate={onUpdate} onView={onView}></AllCustomersList>
-            <br></br>
+          <p>Search Customer by ID#</p>
+          <span>
+            <input type="text" placeholder="Customer ID#" />   
+            <button onClick={e => e.preventDefault()}>Search</button>
+          </span>
+              <AddNewCustomer></AddNewCustomer>
+              <AllCustomersList customersInfo={allCustomers} onUpdate={onUpdate} onView={onView}></AllCustomersList>
+          <br></br>
         </div>
     </div>
     </>

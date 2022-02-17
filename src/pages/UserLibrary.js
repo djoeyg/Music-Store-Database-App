@@ -1,7 +1,7 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
 import customerTracks from '../data/customerTracksData.js';
 import CustomerPlayList from '../components/customerPlayList';
+import NavBar from '../components/navBarLinks';
 import React from 'react';
 
 function UserLibrary({ customerToView }) {
@@ -12,13 +12,12 @@ function UserLibrary({ customerToView }) {
 
   return (
     <>
+    <NavBar></NavBar>
     <div className="body">
         <h2>{fName} {lName}'s Music Tracks Library</h2>
         <div className="App-header">
             <CustomerPlayList playListTracks={customerTracks[idNum]}></CustomerPlayList>
         </div>
-        <Link className="App-link" to="/all-customers">Return to Customers List</Link>
-        <Link className="App-link" to="/">Return to Home Page</Link>
     </div>
     </>
   );

@@ -1,5 +1,5 @@
 import '../App.css';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import allPurchases from '../data/allPurchasesData.js';
 import AllPurchasesList from '../components/allPurchasesList';
 import NavBar from '../components/navBarLinks';
@@ -20,7 +20,7 @@ function Purchases({ setPurchaseToEdit }) {
     <div className="body">
       <h2>Manage Purchases Data</h2>
         <div className="App-header">
-        <br></br>
+        <Link className="App-link" to="/order-tracks">Add/Insert a new Purchase</Link>
         <p>Filter Purchases by Customer ID#</p>
         <span>
           <input type="text" placeholder="Customer ID#" />   

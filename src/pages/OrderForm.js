@@ -1,12 +1,13 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
+import NavBar from '../components/navBarLinks';
 import React from 'react';
 
 function OrderForm() {
   return (
     <>
+    <NavBar></NavBar>
     <div className="body">
-        <h2>Purchase Tracks for Download</h2>
+        <h2>Order &amp; Purchase Tracks for Download</h2>
             <div className="App-header">
                 <p>Make entries for each field below.</p>
                 <table className="table">
@@ -44,15 +45,12 @@ function OrderForm() {
                 <br></br>
                 <button className='button'
                     onClick={e => {
-                  alert('Track has been purchased.\nDownlaod will begin momentarily.\nThank you for your business!');
+                  alert('Track has been purchased.\nOrder will be completed momentarily.');
                   e.preventDefault();
                   }}>Submit
                 </button>
                 <br></br>
             </div>
-        <Link className="App-link" to="/all-tracks">Return to Tracks</Link>
-        <Link className="App-link" to="/orders">Return to Orders</Link>
-        <Link className="App-link" to="/">Return to Home Page</Link>
     </div>
     </>
   );
