@@ -2,6 +2,7 @@ import '../App.css';
 import { Link, useHistory } from 'react-router-dom';
 import allOrders from '../data/allOrdersData.js';
 import AllOrdersList from '../components/allOrdersList';
+import NavBar from '../components/navBarLinks';
 import React from 'react';
 
 function Orders({ setOrderToEdit }) {
@@ -15,6 +16,7 @@ function Orders({ setOrderToEdit }) {
 
   return (
     <>
+    <NavBar></NavBar>
     <div className="body">
         <h2>Manage Orders Data</h2>
         <div className="App-header">
@@ -23,7 +25,6 @@ function Orders({ setOrderToEdit }) {
         <AllOrdersList ordersInfo={allOrders} onOrderUpdate={onOrderUpdate}></AllOrdersList>
         <br></br>
         </div>
-        <Link className="App-link" to="/">Return to Home</Link>
     </div>
     </>
   );

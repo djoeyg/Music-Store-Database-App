@@ -1,8 +1,9 @@
 import '../App.css';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import allCustomers from '../data/allCustomersData.js';
 import AllCustomersList from '../components/allCustomersList';
 import AddNewCustomer from '../components/addCustomer';
+import NavBar from '../components/navBarLinks';
 import React from 'react';
 
 function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
@@ -21,6 +22,7 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
 
   return (
     <>
+    <NavBar></NavBar>
     <div className="body">
         <h2>All Registered Customers</h2>
         <div className="App-header">
@@ -28,7 +30,6 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
             <AllCustomersList customersInfo={allCustomers} onUpdate={onUpdate} onView={onView}></AllCustomersList>
             <br></br>
         </div>
-        <Link className="App-link" to="/">Return to Home</Link>
     </div>
     </>
   );

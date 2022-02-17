@@ -9,6 +9,7 @@ import EditTrackInfo from './pages/EditTrackInfo';
 import UpdateCustomerInfo from './pages/UpdateCustomer';
 import OrderForm from './pages/OrderForm';
 import Orders from './pages/Orders';
+import OrdersTracks from './pages/OrdersTracks'
 import UpdateOrderInfo from './pages/UpdateOrder';
 import Purchases from './pages/Purchases';
 import UpdatePurchaseInfo from './pages/UpdatePurchase';
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <Route path="/order-tracks">
           <OrderForm />
+        </Route>
+        <Route path="/orders-composite-table">
+          <OrdersTracks />
         </Route>
         <Route path="/orders">
           <Orders setOrderToEdit={setOrderToEdit}/>
