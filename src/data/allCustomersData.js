@@ -18,8 +18,8 @@ const allCustomers = [
       city: 'Someplace',
       state: 'NULL',
       zipCode: '12345',
-      phone: '541-123-4567',
-      ipAddress: '192.168.1.1'},
+      phone: '555-123-4567',
+      ipAddress: '192.168.1.8'},
 
     { customerID: '3', 
       firstName: 'Joe',     
@@ -29,8 +29,8 @@ const allCustomers = [
       city: 'No Where',
       state: 'ID',
       zipCode: '12345',
-      phone: '541-123-4567',
-      ipAddress: '192.168.1.1'}
+      phone: '208-123-4567',
+      ipAddress: '192.168.1.2'}
 ];
 
 export default allCustomers;
