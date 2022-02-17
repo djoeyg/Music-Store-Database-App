@@ -11,6 +11,7 @@ function AllTracksList({ availableTracks, onEdit }) {
               <th>ID#</th>
               <th>Track Title</th>
               <th>Length</th>
+              <th>Price</th>
               <th>Release Date</th>
               <th>Edit Info</th>
               <th>Purchase Track</th>

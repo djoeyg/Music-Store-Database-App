@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 function AddNewTrack() {
 
     const [trackTitle, setTrackTitle] = useState('');
-    const [trackLength, setTrackLength] = useState('')
+    const [trackLength, setTrackLength] = useState('');
+    const [retailPrice, setRetailPrice] = useState('');
     const [releaseDate, setReleaseDate] = useState('');
 
     const addTrack = async () => {
@@ -37,6 +38,12 @@ function AddNewTrack() {
                 placeholder="Track Length"
                 onChange={e => setTrackLength(e.target.value)} />
             
+            <input
+                type="text"
+                value={retailPrice}
+                placeholder="Price"
+                onChange={e => setRetailPrice(e.target.value)} />    
+
             <input
                 type="text"
                 value={releaseDate}

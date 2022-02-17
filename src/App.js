@@ -9,7 +9,9 @@ import EditTrackInfo from './pages/EditTrackInfo';
 import UpdateCustomerInfo from './pages/UpdateCustomer';
 import OrderForm from './pages/OrderForm';
 import Orders from './pages/Orders';
+import UpdateOrderInfo from './pages/UpdateOrder';
 import Purchases from './pages/Purchases';
+import UpdatePurchaseInfo from './pages/UpdatePurchase';
 import React from 'react';
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
   const [customerToEdit, setCustomerToEdit] = useState();
   const [customerToView, setCustomerToView] = useState();
   const [trackToEdit, setTrackToEdit] = useState();
+  const [orderToEdit, setOrderToEdit] = useState();
+  const [purchaseToEdit, setPurchaseToEdit] = useState();
 
   return (
     <>
@@ -44,10 +48,16 @@ function App() {
           <OrderForm />
         </Route>
         <Route path="/orders">
-          <Orders />
+          <Orders setOrderToEdit={setOrderToEdit}/>
+        </Route>
+        <Route path="/update-order">
+          <UpdateOrderInfo orderToEdit={orderToEdit}/>
         </Route>
         <Route path="/purchases">
-          <Purchases />
+          <Purchases setPurchaseToEdit={setPurchaseToEdit}/>
+        </Route>
+        <Route path="/update-purchase">
+          <UpdatePurchaseInfo purchaseToEdit={purchaseToEdit}/>
         </Route>
       </Router>
     </div>

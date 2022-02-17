@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 3.5s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 
@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1.25vmin);
   color: white;
 }
 
@@ -108,16 +108,14 @@ input {
   text-align: left;
   justify-content: center;
   width: 14em;
-  padding-top: .2em;
-  padding-bottom: .2em;
+  padding: .2em 0em .2em 0em;
+  margin: .2em .2em .2em .2em;
 }
 
 button {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: black;
   font-size: .7em;
-  padding-top: .2em;
-  padding-bottom: .2em;
-  margin-left: 15px;
-  margin-right: 15px;
+  padding: .2em .2em .2em .2em;
+  margin: 20px 15px 0px 15px;
 }

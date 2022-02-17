@@ -8,9 +8,10 @@ function CustomerPlayList({ playListTracks }) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID#</th>
+              <th>Track ID#</th>
               <th>Track Title</th>
               <th>Length</th>
+              <th>Price</th>
               <th>Release Date</th>
               <th>Delete Track?</th>
             </tr>

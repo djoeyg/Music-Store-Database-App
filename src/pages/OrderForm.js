@@ -24,6 +24,14 @@ function OrderForm() {
                             <td><input type="text" /></td>
                         </tr>
                         <tr>
+                            <td>Retail Price:</td>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>Date &amp; Time:</td>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
                             <td>Credit Card Number:</td>
                             <td><input type="text" /></td>
                         </tr>
@@ -43,6 +51,7 @@ function OrderForm() {
                 <br></br>
             </div>
         <Link className="App-link" to="/all-tracks">Return to Tracks</Link>
+        <Link className="App-link" to="/orders">Return to Orders</Link>
         <Link className="App-link" to="/">Return to Home Page</Link>
     </div>
     </>

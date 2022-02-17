@@ -12,6 +12,12 @@ function AllCustomersList({ customersInfo, onUpdate, onView }) {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>St</th>
+              <th>Zip Code</th>
+              <th>Phone</th>
+              <th>IP Address</th>
               <th>Update Info</th>
               <th>Customer Play List</th>
             </tr>

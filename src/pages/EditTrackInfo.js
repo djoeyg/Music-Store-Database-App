@@ -6,6 +6,7 @@ export const EditTrackInfo = ({ trackToEdit }) => {
 
     const [trackTitle, setTrackTitle] = useState(trackToEdit.trackTitle);
     const [trackLength, setTrackLength] = useState(trackToEdit.trackLength);
+    const [retailPrice, setRetailPrice] = useState(trackToEdit.retailPrice);
     const [releaseDate, setReleaseDate] = useState(trackToEdit.releaseDate);
 
     const history = useHistory();
@@ -49,6 +50,13 @@ export const EditTrackInfo = ({ trackToEdit }) => {
                                 type="text"
                                 value={trackLength}
                                 onChange={e => setTrackLength(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>Retail Price:</td>
+                        <td><input
+                                type="text"
+                                value={retailPrice}
+                                onChange={e => setRetailPrice(e.target.value)} /></td> 
                     </tr>
                     <tr>
                         <td>Release Date:</td>

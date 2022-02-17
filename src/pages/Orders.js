@@ -1,10 +1,18 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
-import allTracks from '../data/allTracksData.js';
-import AllTracksList from '../components/allTracksList';
+import { Link, useHistory } from 'react-router-dom';
+import allOrders from '../data/allOrdersData.js';
+import AllOrdersList from '../components/allOrdersList';
 import React from 'react';
 
-function Orders() {
+function Orders({ setOrderToEdit }) {
+
+  const history = useHistory();
+
+  const onOrderUpdate = orderToEdit => {
+    setOrderToEdit(orderToEdit);
+    history.push("/update-order");
+  }
+
   return (
     <>
     <div className="body">
@@ -12,7 +20,7 @@ function Orders() {
         <div className="App-header">
         <Link className="App-link" to="/order-tracks">Add new Order</Link>
         <br></br>
-        <AllTracksList availableTracks={allTracks}></AllTracksList>
+        <AllOrdersList ordersInfo={allOrders} onOrderUpdate={onOrderUpdate}></AllOrdersList>
         <br></br>
         </div>
         <Link className="App-link" to="/">Return to Home</Link>
