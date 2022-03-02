@@ -8,19 +8,19 @@ function AddNewTrack() {
     const [releaseDate, setReleaseDate] = useState('');
 
     const addTrack = async () => {
-        /*const newRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
-        const response = await fetch('/recipes', {
+        const newTrack = { trackTitle, trackLength, retailPrice, releaseDate };
+        const response = await fetch('/api/insert-track', {
             method: 'POST',
-            body: JSON.stringify(newRecipe),
+            body: JSON.stringify(newTrack),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         if (response.status === 201) {
-            alert("Successfully added the new recipe");
+            alert("Successfully added the new track information");
         } else {
-            alert(`Failed to add recipe, status code = ${response.status}`);
-        }*/
+            alert(`Failed to add new track, status code = ${response.status}`);
+        }
     };
 
     return (
