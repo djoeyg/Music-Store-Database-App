@@ -30,7 +30,7 @@ function AllTracks({ setTrackToEdit }) {
     loadTracks();
   };
 
-  const onDelete = async _id => {
+  const onDeleteTrack = async _id => {
     const response = await fetch(`/api/delete-track/${_id}`, { method: 'DELETE' });
     if (response.status !== 200) {
         alert(`Failed to delete Track with _id = ${_id}, status code = ${response.status}`);
@@ -98,7 +98,7 @@ useEffect(() => {
             >Add to Tracks</button>
             <br></br><br></br>
             </div>
-            <AllTracksList availableTracks={allTracks} onEdit={onEdit} onDelete={onDelete}></AllTracksList>
+            <AllTracksList availableTracks={allTracks} onEdit={onEdit} onDeleteTrack={onDeleteTrack}></AllTracksList>
             <br></br>
         </div>
     </div>

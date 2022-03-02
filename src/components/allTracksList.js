@@ -2,7 +2,7 @@ import '../App.css';
 import AvailableTrack from './availableTrack.js';
 import React from 'react';
 
-function AllTracksList({ availableTracks, onEdit, onDelete }) {
+function AllTracksList({ availableTracks, onEdit, onDeleteTrack }) {
     return (
       <>  
         <table className="table">
@@ -22,7 +22,7 @@ function AllTracksList({ availableTracks, onEdit, onDelete }) {
               {availableTracks.map((availableTrack, i) => <AvailableTrack 
                   aTrack={availableTrack}
                   onEdit={onEdit}
-                  onDelete={onDelete} 
+                  onDeleteTrack={onDeleteTrack} 
                   key={i} />)}
           </tbody>
         </table> 
