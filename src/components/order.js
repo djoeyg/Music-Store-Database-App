@@ -9,13 +9,24 @@ function Order({ orderInfo, onOrderUpdate, onDeleteOrder }) {
     // Method for formatting JS timestamp data: https://www.cloudhadoop.com/reactjs-convert-timestamp-date/
     const formatedDateTime = moment(orderInfo.orderDateTime).format("YYYY-MM-DD HH:mm:ss");
 
+    function displayBool(value) {
+        let outVal;
+        if (value === 0) {
+            outVal = "No";
+        } else if (value === 1) {
+            outVal = "Yes";
+        } else
+            outVal = value;
+        return outVal;
+    };
+
     return (
         <>
           <tr>
               <td>{orderInfo.orderID}</td>
               <td>{orderInfo.customerID}</td>
               <td>{formatedDateTime}</td>
-              <td>{orderInfo.orderComplete}</td>
+              <td>{displayBool(orderInfo.orderComplete)}</td>
               <td><AiFillEdit onClick={() => onOrderUpdate(orderInfo)}/></td>
               <td><BiTrash onClick={() => onDeleteOrder(orderInfo.orderID)}/></td>
           </tr>

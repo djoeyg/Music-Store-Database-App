@@ -1,35 +1,156 @@
 import '../App.css';
 import '../layout.css'
-import NavBar from '../components/navBarLinks';
-import AddNewOrderedTrack from '../components/addOrderedTrack';
 import React from 'react';
+import NavBar from '../components/navBarLinks';
+import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import AllOrdersTracksList from '../components/allOrdersTracksList';
 
-function OrdersTracks({  }) {
-    return (
-        <>
-        <NavBar></NavBar>
-          <div className="body">
-            <h2>Orders/Tracks Composite Table</h2>
-              <div className="App-header">
-              <p>Search Ordered Tracks by ID#</p>
-                <span>
-                  <input type="text" placeholder="Ordered Track ID#" />   
-                  <button onClick={e => e.preventDefault()}>Search</button>
-                </span>
-                <AddNewOrderedTrack></AddNewOrderedTrack>
+function OrdersTracks({ setOrderedTrackToEdit }) {
+
+  const [orderID, setOrderID] = useState('');
+  const [customerID, setCustomerID] = useState('');
+  const [trackID, setTrackID] = useState('');
+  
+  const [allOrdersTracks, setOrdersTracks] = useState([]);
+  const history = useHistory();
+
+  const AddOrderedTrack = async () => {
+    const newOrderedTrack = { orderID, customerID, trackID };
+    const response = await fetch('/api/insert-ordered-track', {
+        method: 'POST',
+        body: JSON.stringify(newOrderedTrack),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.status !== 200) {
+        alert(`Failed to add new customer information, status code = ${response.status}`);
+      }
+    loadOrdersTracks();
+  };
+
+  const onDeleteOrderedTrack = async _id => {
+    const response = await fetch(`/api/delete-ordered-track/${_id}`, { method: 'DELETE' });
+    if (response.status !== 200) {
+        alert(`Failed to delete Ordered Track with _id = ${_id}, status code = ${response.status}`);
+      }
+    loadOrdersTracks();
+  };
+
+  const onOrdersTracksUpdate = orderedTrackToEdit => {
+    setOrderedTrackToEdit(orderedTrackToEdit);
+    history.push("/update-orders-tracks");
+  }
+
+  const loadOrdersTracks = async () => {
+    const response = await fetch('/api/get-orders-tracks', {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+    });
+    const data = await response.json();
+    setOrdersTracks(data);
+  };
+
+  useEffect(() => {
+      loadOrdersTracks();
+  }, []);
+
+  return (
+    <>
+      <NavBar></NavBar>
+        <div className="body">
+          <h2>Orders/Tracks Composite Table</h2>
+            <div className="App-header">
+            <p>Search Ordered Tracks by ID#</p>
+              <span>
+                <input type="text" placeholder="Ordered Track ID#" />   
+                <button onClick={e => e.preventDefault()}>Search</button>
+              </span>
+              <div>
+                <h4>Insert New Ordered Track Information</h4>
+                <input
+                    type="text"
+                    value={orderID}
+                    placeholder="Order ID#"
+                    onChange={e => setOrderID(e.target.value)} />
+
+                <input
+                    type="text"
+                    value={customerID}
+                    placeholder="Customer ID#"
+                    onChange={e => setCustomerID(e.target.value)} />
+                
+                <input
+                    type="text"
+                    value={trackID}
+                    placeholder="Track ID#"
+                    onChange={e => setTrackID(e.target.value)} />
+
                 <br></br>
-                <AllOrdersTracksList ordersTracksInfo={allOrdersTracks} onOrdersTracksUpdate={onOrdersTracksUpdate} onDeleteOrderedTrack={onDeleteOrderedTrack}></AllOrdersTracksList>
+
+                <button
+                    onClick={AddOrderedTrack}
+                >Add to Ordered Tracks</button>
                 <br></br>
               </div>
-            <br></br>
-          </div> 
-      </>
-    );
+              <br></br>
+              <AllOrdersTracksList ordersTracksInfo={allOrdersTracks} onOrdersTracksUpdate={onOrdersTracksUpdate} onDeleteOrderedTrack={onDeleteOrderedTrack}></AllOrdersTracksList>
+              <br></br>
+            </div>
+          <br></br>
+        </div> 
+    </>
+  );
 }
 
 export default OrdersTracks;
 
-/* { orderID: '1', customerID: '1', orderDateTime: '2022-01-30 14:30:00', orderComplete: 'True' },
+/*
+  const [orderComplete, setOrderComplete] = useState('')
+  const [dateTime, setDateTime] = useState('');
+
+  const [trackTitle, setTrackTitle] = useState('');
+  const [trackLength, setTrackLength] = useState('');
+  const [retailPrice, setRetailPrice] = useState('');
+  const [releaseDate, setReleaseDate] = useState('');
+
+  <input
+      type="text"
+      value={orderComplete}
+      placeholder="Order Complete?"
+      onChange={e => setOrderComplete(e.target.value)} />
+  
+  <input
+      type="text"
+      value={dateTime}
+      placeholder="Date &amp; Time"
+      onChange={e => setDateTime(e.target.value)} />
+
+  <input
+      type="text"
+      value={trackTitle}
+      placeholder="Track Title"
+      onChange={e => setTrackTitle(e.target.value)} />
+
+  <input
+      type="text"
+      value={trackLength}
+      placeholder="Track Length"
+      onChange={e => setTrackLength(e.target.value)} /> 
+
+  <input
+      type="text"
+      value={retailPrice}
+      placeholder="Retail Price"
+      onChange={e => setRetailPrice(e.target.value)} />
+
+  <input
+      type="text"
+      value={releaseDate}
+      placeholder="Release Date"
+      onChange={e => setReleaseDate(e.target.value)} />
+
+
+    { orderID: '1', customerID: '1', orderDateTime: '2022-01-30 14:30:00', orderComplete: 'True' },
     { orderID: '2', customerID: '2', orderDateTime: '2022-02-01 09:45:00', orderComplete: 'True' },
     { orderID: '3', customerID: '1', orderDateTime: '2022-02-04 11:15:00', orderComplete: 'True' },
     { orderID: '4', customerID: '3', orderDateTime: '2022-02-11 17:00:00', orderComplete: 'False' }

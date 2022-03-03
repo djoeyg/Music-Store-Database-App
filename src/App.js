@@ -11,6 +11,7 @@ import OrderForm from './pages/OrderForm';
 import Orders from './pages/Orders';
 import OrdersTracks from './pages/OrdersTracks'
 import UpdateOrderInfo from './pages/UpdateOrder';
+import UpdateOrdersTracksInfo from './pages/UpdateOrdersTracks';
 import Purchases from './pages/Purchases';
 import UpdatePurchaseInfo from './pages/UpdatePurchase';
 import React from 'react';
@@ -21,6 +22,7 @@ function App() {
   const [customerToView, setCustomerToView] = useState();
   const [trackToEdit, setTrackToEdit] = useState();
   const [orderToEdit, setOrderToEdit] = useState();
+  const [orderedTrackToEdit, setOrderedTrackToEdit] = useState();
   const [purchaseToEdit, setPurchaseToEdit] = useState();
 
   return (
@@ -48,8 +50,11 @@ function App() {
         <Route path="/order-tracks">
           <OrderForm />
         </Route>
-        <Route path="/orders-composite-table">
-          <OrdersTracks />
+        <Route path="/orders-tracks">
+          <OrdersTracks setOrderedTrackToEdit={setOrderedTrackToEdit}/>
+        </Route>
+        <Route path="/update-orders-tracks">
+          <UpdateOrdersTracksInfo orderedTrackToEdit={orderedTrackToEdit}/>
         </Route>
         <Route path="/orders">
           <Orders setOrderToEdit={setOrderToEdit}/>

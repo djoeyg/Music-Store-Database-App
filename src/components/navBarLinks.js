@@ -22,7 +22,7 @@ function NavBar() {
             <Link className="App-link" to="/orders">Orders Data</Link>
           </div>
           <div className="box box6">
-            <Link className="App-link" to="/orders-composite-table">Orders/Tracks</Link>
+            <Link className="App-link" to="/orders-tracks">Orders/Tracks</Link>
           </div>
           <div className="box box7">
             <Link className="App-link" to="/purchases">Purchases</Link>
