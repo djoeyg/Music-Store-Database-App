@@ -21,7 +21,7 @@ function Customer({ custInfo, onUpdate, onView, onDeleteCustomer }) {
               <td>{custInfo.customerZip}</td>
               <td>{custInfo.customerPhone}</td>
               <td><AiFillEdit onClick={() => onUpdate(custInfo)}/></td>
-              <td><Link className="App-link" onClick={() => onView(custInfo)} to="user-library">View Tracks</Link></td>
+              <td><Link className="App-link" onClick={() => onView(custInfo)} to="user-library">View</Link></td>
               <td><BiTrash onClick={() => onDeleteCustomer(custInfo.customerID)}/></td>
           </tr>
       </>

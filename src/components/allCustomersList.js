@@ -20,7 +20,7 @@ function AllCustomersList({ customersInfo, onUpdate, onView, onDeleteCustomer })
               <th>Phone</th>
               <th>Edit Info</th>
               <th>Play List</th>
-              <th>Del?</th>
+              <th>Delete?</th>
             </tr>
           </thead>
           <tbody>

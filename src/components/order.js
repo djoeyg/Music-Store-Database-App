@@ -1,21 +1,23 @@
 import '../App.css';
 import React from 'react';
+import moment from 'moment';
 import { AiFillEdit } from 'react-icons/ai';
 import { BiTrash } from 'react-icons/bi';
 
-function Order({ orderInfo, onOrderUpdate }) {
+function Order({ orderInfo, onOrderUpdate, onDeleteOrder }) {
+
+    // Method for formatting JS timestamp data: https://www.cloudhadoop.com/reactjs-convert-timestamp-date/
+    const formatedDateTime = moment(orderInfo.orderDateTime).format("YYYY-MM-DD HH:mm:ss");
+
     return (
         <>
           <tr>
               <td>{orderInfo.orderID}</td>
               <td>{orderInfo.customerID}</td>
-              <td>{orderInfo.orderDateTime}</td>
+              <td>{formatedDateTime}</td>
               <td>{orderInfo.orderComplete}</td>
               <td><AiFillEdit onClick={() => onOrderUpdate(orderInfo)}/></td>
-              <td><BiTrash onClick={e => {
-                  alert('Order Deleted');
-                  e.preventDefault();
-                  }}/></td>
+              <td><BiTrash onClick={() => onDeleteOrder(orderInfo.orderID)}/></td>
           </tr>
       </>
     );

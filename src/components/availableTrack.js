@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 function AvailableTrack({ aTrack, onEdit, onDeleteTrack }) {
 
+    // Method for formatting JS timestamp data: https://www.cloudhadoop.com/reactjs-convert-timestamp-date/
     const formatedDate = moment(aTrack.releaseDate).format("YYYY-MM-DD");
 
     return (
@@ -15,7 +16,7 @@ function AvailableTrack({ aTrack, onEdit, onDeleteTrack }) {
               <td>{aTrack.trackID}</td>
               <td>{aTrack.trackTitle}</td>
               <td>{aTrack.trackLength}</td>
-              <td>{aTrack.retailPrice}</td>
+              <td>${aTrack.retailPrice}</td>
               <td>{formatedDate}</td>
               <td><AiFillEdit onClick={() => onEdit(aTrack)}/></td>
               <td><Link className="App-link" to="/order-tracks">Download</Link></td>

@@ -47,12 +47,12 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
   const onUpdate = customerToEdit => {
     setCustomerToEdit(customerToEdit);
     history.push("/update-customer");
-  }
+  };
 
   const onView = customerToView => {
     setCustomerToView(customerToView);
     history.push("/user-library");
-  }
+  };
 
   const loadCustomers = async () => {
     const response = await fetch('/api/get-customers', {
@@ -61,11 +61,11 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
     });
     const data = await response.json();
     setCustomers(data);
-}
+  };
 
-useEffect(() => {
-    loadCustomers();
-}, []);
+  useEffect(() => {
+      loadCustomers();
+  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@ import '../App.css';
 import Purchase from './purchase.js';
 import React from 'react';
 
-function AllPurchasesList({ purchasesInfo, onPurchaseUpdate }) {
+function AllPurchasesList({ purchasesInfo, onPurchaseUpdate, onDeletePurchase }) {
     return (
       <>  
         <table className="table">
@@ -21,7 +21,8 @@ function AllPurchasesList({ purchasesInfo, onPurchaseUpdate }) {
           <tbody>
               {purchasesInfo.map((purchaseData, i) => <Purchase
                   purchaseInfo={purchaseData} 
-                  onPurchaseUpdate={onPurchaseUpdate} 
+                  onPurchaseUpdate={onPurchaseUpdate}
+                  onDeletePurchase={onDeletePurchase}
                   key={i} />)}
           </tbody>
         </table> 

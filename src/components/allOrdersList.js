@@ -2,7 +2,7 @@ import '../App.css';
 import Order from './order.js';
 import React from 'react';
 
-function AllOrdersList({ ordersInfo, onOrderUpdate }) {
+function AllOrdersList({ ordersInfo, onOrderUpdate, onDeleteOrder }) {
     return (
       <>  
         <table className="table">
@@ -19,7 +19,8 @@ function AllOrdersList({ ordersInfo, onOrderUpdate }) {
           <tbody>
               {ordersInfo.map((orderData, i) => <Order 
                   orderInfo={orderData} 
-                  onOrderUpdate={onOrderUpdate} 
+                  onOrderUpdate={onOrderUpdate}
+                  onDeleteOrder={onDeleteOrder} 
                   key={i} />)}
           </tbody>
         </table> 

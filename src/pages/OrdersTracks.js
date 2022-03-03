@@ -4,7 +4,7 @@ import NavBar from '../components/navBarLinks';
 import AddNewOrderedTrack from '../components/addOrderedTrack';
 import React from 'react';
 
-function OrdersTracks() {
+function OrdersTracks({  }) {
     return (
         <>
         <NavBar></NavBar>
@@ -16,8 +16,54 @@ function OrdersTracks() {
                   <input type="text" placeholder="Ordered Track ID#" />   
                   <button onClick={e => e.preventDefault()}>Search</button>
                 </span>
-                  <AddNewOrderedTrack></AddNewOrderedTrack>
-                <table className="table">
+                <AddNewOrderedTrack></AddNewOrderedTrack>
+                <br></br>
+                <AllOrdersTracksList ordersTracksInfo={allOrdersTracks} onOrdersTracksUpdate={onOrdersTracksUpdate} onDeleteOrderedTrack={onDeleteOrderedTrack}></AllOrdersTracksList>
+                <br></br>
+              </div>
+            <br></br>
+          </div> 
+      </>
+    );
+}
+
+export default OrdersTracks;
+
+/* { orderID: '1', customerID: '1', orderDateTime: '2022-01-30 14:30:00', orderComplete: 'True' },
+    { orderID: '2', customerID: '2', orderDateTime: '2022-02-01 09:45:00', orderComplete: 'True' },
+    { orderID: '3', customerID: '1', orderDateTime: '2022-02-04 11:15:00', orderComplete: 'True' },
+    { orderID: '4', customerID: '3', orderDateTime: '2022-02-11 17:00:00', orderComplete: 'False' }
+    
+    { trackID: '2', 
+      trackTitle: 'Chicken Fried', 
+      trackLength: '4:33', 
+      retailPrice: '2.00', 
+      releaseDate: '2008-06-16' },
+
+    { trackID: '3', 
+      trackTitle: 'Young Blood', 
+      trackLength: '3:53', 
+      retailPrice: '2.00', 
+      releaseDate: '2010-07-07' },
+    ],
+
+    [
+    { trackID: '1', 
+      trackTitle: "We Don't Talk About Bruno", 
+      trackLength: '3:36', 
+      retailPrice: '1.99', 
+      releaseDate: '2021-11-19' },
+    ],
+
+    [
+    { trackID: 'Null', 
+      trackTitle: "Null", 
+      trackLength: 'Null', 
+      retailPrice: 'Null', 
+      releaseDate: 'Null' },
+    ]
+
+    <table className="table">
                   <thead>
                     <tr> 
                       <th>O/Tr ID#</th>  
@@ -83,46 +129,4 @@ function OrdersTracks() {
                     </tr>            
                   </tbody>
                 </table>
-                <br></br>
-              </div>
-            </div> 
-      </>
-    );
-}
-
-export default OrdersTracks;
-
-/* { orderID: '1', customerID: '1', orderDateTime: '2022-01-30 14:30:00', orderComplete: 'True' },
-    { orderID: '2', customerID: '2', orderDateTime: '2022-02-01 09:45:00', orderComplete: 'True' },
-    { orderID: '3', customerID: '1', orderDateTime: '2022-02-04 11:15:00', orderComplete: 'True' },
-    { orderID: '4', customerID: '3', orderDateTime: '2022-02-11 17:00:00', orderComplete: 'False' }
-    
-    { trackID: '2', 
-      trackTitle: 'Chicken Fried', 
-      trackLength: '4:33', 
-      retailPrice: '2.00', 
-      releaseDate: '2008-06-16' },
-
-    { trackID: '3', 
-      trackTitle: 'Young Blood', 
-      trackLength: '3:53', 
-      retailPrice: '2.00', 
-      releaseDate: '2010-07-07' },
-    ],
-
-    [
-    { trackID: '1', 
-      trackTitle: "We Don't Talk About Bruno", 
-      trackLength: '3:36', 
-      retailPrice: '1.99', 
-      releaseDate: '2021-11-19' },
-    ],
-
-    [
-    { trackID: 'Null', 
-      trackTitle: "Null", 
-      trackLength: 'Null', 
-      retailPrice: 'Null', 
-      releaseDate: 'Null' },
-    ]
     */
