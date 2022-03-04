@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 export const EditTrackInfo = ({ trackToEdit }) => {
 
+    const _id = trackToEdit.trackID
+    const originalDate = trackToEdit.releaseDate
+
+    // Method for formatting JS timestamp data: https://www.cloudhadoop.com/reactjs-convert-timestamp-date/
+    const formatedDate = moment(originalDate).format("YYYY-MM-DD");
+
     const [trackTitle, setTrackTitle] = useState(trackToEdit.trackTitle);
     const [trackLength, setTrackLength] = useState(trackToEdit.trackLength);
     const [retailPrice, setRetailPrice] = useState(trackToEdit.retailPrice);
-    const [releaseDate, setReleaseDate] = useState(trackToEdit.releaseDate);
+    const [releaseDate, setReleaseDate] = useState(formatedDate);
 
     const history = useHistory();
 
     const editTrack = async () => {
-        /*const editedRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
-        const response = await fetch(`/recipes/${recipeToEdit._id}`, {
+        const editedTrack = { trackTitle, trackLength, retailPrice, releaseDate, _id};
+        const response = await fetch(`/api/update-track/${_id}`, {
             method: 'PUT',
-            body: JSON.stringify(editedRecipe),
+            body: JSON.stringify(editedTrack),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         if (response.status === 200) {
-            alert("Customer successfully updated");
+            alert("Track information successfully updated");
         } else {
-            alert(`Failed to update customer, status code = ${response.status}`);
-        }*/
+            alert(`Failed to update track information, status code = ${response.status}`);
+        }
         history.push("/all-tracks");
     };
 

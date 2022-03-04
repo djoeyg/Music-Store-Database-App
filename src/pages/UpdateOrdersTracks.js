@@ -5,14 +5,13 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
 
     const _id = orderedTrackToEdit.orderedTrackID;
     const [orderID, setOrderID] = useState(orderedTrackToEdit.orderID);
-    const [customerID, setCustomerID] = useState(orderedTrackToEdit.customerID);
     const [trackID, setTrackID] = useState(orderedTrackToEdit.trackID);
 
     const history = useHistory();
 
     const editOrderedTrack = async () => {
-        const editedOrderedTrack = { _id, orderID, customerID, trackID };
-        const response = await fetch(`/api/update-orders-tracks/${_id}`, {
+        const editedOrderedTrack = { _id, orderID, trackID };
+        const response = await fetch(`/api/update-ordered-track/${_id}`, {
             method: 'PUT',
             body: JSON.stringify(editedOrderedTrack),
             headers: {
@@ -42,13 +41,6 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
                                 type="text"
                                 value={orderID}
                                 onChange={e => setOrderID(e.target.value)} /></td>
-                    </tr>
-                    <tr>
-                        <td>Customer ID#:</td>
-                        <td><input
-                                type="text"
-                                value={customerID}
-                                onChange={e => setCustomerID(e.target.value)} /></td>
                     </tr>
                     <tr>
                         <td>Track ID#:</td>

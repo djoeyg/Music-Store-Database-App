@@ -9,14 +9,13 @@ import AllOrdersTracksList from '../components/allOrdersTracksList';
 function OrdersTracks({ setOrderedTrackToEdit }) {
 
   const [orderID, setOrderID] = useState('');
-  const [customerID, setCustomerID] = useState('');
   const [trackID, setTrackID] = useState('');
   
   const [allOrdersTracks, setOrdersTracks] = useState([]);
   const history = useHistory();
 
   const AddOrderedTrack = async () => {
-    const newOrderedTrack = { orderID, customerID, trackID };
+    const newOrderedTrack = { orderID, trackID };
     const response = await fetch('/api/insert-ordered-track', {
         method: 'POST',
         body: JSON.stringify(newOrderedTrack),
@@ -73,12 +72,6 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
                     placeholder="Order ID#"
                     onChange={e => setOrderID(e.target.value)} />
 
-                <input
-                    type="text"
-                    value={customerID}
-                    placeholder="Customer ID#"
-                    onChange={e => setCustomerID(e.target.value)} />
-                
                 <input
                     type="text"
                     value={trackID}

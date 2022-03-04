@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import { Link, useHistory } from 'react-router-dom';
 
 export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
 
+    const _id = purchaseToEdit.purchaseID
+    const originalDateTime = purchaseToEdit.purchaseDateTime
+
+    // Method for formatting JS timestamp data: https://www.cloudhadoop.com/reactjs-convert-timestamp-date/
+    const formatedDateTime = moment(originalDateTime).format("YYYY-MM-DD HH:mm:ss");
+
     const [customerID, setCustomerID] = useState(purchaseToEdit.customerID);
-    const [purchaseDateTime, setPurchaseDateTime] = useState(purchaseToEdit.purchaseDateTime);
+    const [purchaseDateTime, setPurchaseDateTime] = useState(formatedDateTime);
     const [totalPurchase, setTotalPurchase] = useState(purchaseToEdit.totalPurchase);
     const [creditCardNum, setCreditCardNum] = useState(purchaseToEdit.creditCardNum);
     const [creditCardExp, setCreditCardExp] = useState(purchaseToEdit.creditCardExp);
@@ -12,19 +19,19 @@ export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
     const history = useHistory();
 
     const editPurchase = async () => {
-        /*const editedRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
-        const response = await fetch(`/recipes/${recipeToEdit._id}`, {
+        const editedPurchase = { customerID, purchaseDateTime, totalPurchase, creditCardNum, creditCardExp, _id };
+        const response = await fetch(`/api/update-purchase/${_id}`, {
             method: 'PUT',
-            body: JSON.stringify(editedRecipe),
+            body: JSON.stringify(editedPurchase),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         if (response.status === 200) {
-            alert("Customer successfully updated");
+            alert("Purchase information successfully updated");
         } else {
-            alert(`Failed to update customer, status code = ${response.status}`);
-        }*/
+            alert(`Failed to update purchase information, status code = ${response.status}`);
+        }
         history.push("/purchases");
     };
 
