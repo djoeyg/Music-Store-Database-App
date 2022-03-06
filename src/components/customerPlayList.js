@@ -2,7 +2,7 @@ import '../App.css';
 import CustomerTrack from './customerTrack.js';
 import React from 'react';
 
-function CustomerPlayList({ playListTracks }) {
+function CustomerPlayList({ playListTracks, onDeleteOrderedTrack }) {
     return (
       <>  
         <table className="table">
@@ -17,7 +17,10 @@ function CustomerPlayList({ playListTracks }) {
             </tr>
           </thead>
           <tbody>
-              {playListTracks.map((customerTrack, i) => <CustomerTrack track={customerTrack} key={i} />)}
+              {playListTracks.map((customerTrack, i) => <CustomerTrack 
+                track={customerTrack} 
+                onDeleteOrderedTrack={onDeleteOrderedTrack}
+                key={i} />)}
           </tbody>
         </table> 
       </> 

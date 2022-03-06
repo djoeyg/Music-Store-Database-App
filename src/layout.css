@@ -11,7 +11,8 @@
 
 .wrapper > div{
     /*background-color: #13b5ca;*/
-    background-color: rgb(30, 133, 202);
+    /*background-color: rgb(30, 133, 202);*/
+    background-color: transparent;
 }
 
 /*

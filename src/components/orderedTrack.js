@@ -49,7 +49,7 @@ function OrderedTrack({ ordTrksInfo, onOrdersTracksUpdate, onDeleteOrderedTrack 
               <td>{displayVal(ordTrksInfo.trackID)}</td>
               <td>{displayVal(ordTrksInfo.trackTitle)}</td>
               <td>{displayVal(ordTrksInfo.trackLength)}</td>
-              <td>{displayVal(ordTrksInfo.retailPrice)}</td>
+              <td>${displayVal(ordTrksInfo.retailPrice)}</td>
               <td>{formatedDate(ordTrksInfo.releaseDate)}</td>
               <td><AiFillEdit onClick={() => onOrdersTracksUpdate(ordTrksInfo)}/></td>
               <td><BiTrash onClick={() => onDeleteOrderedTrack(ordTrksInfo.orderedTrackID)}/></td>

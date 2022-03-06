@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: rgb(129,231,173);
+  background: linear-gradient(90deg, rgba(129,231,173,1) 0%, rgba(15,138,238,1) 50%, rgba(0,234,255,1) 100%);
 }
 
 .App-logo {
@@ -41,7 +43,10 @@
 
 .body {
   height: 100vh;
-  background-color: #13b5ca;
+  /* https://cssgradient.io/ */
+  background: rgb(129,231,173);
+  background: linear-gradient(90deg, rgba(129,231,173,1) 0%, rgba(15,138,238,1) 50%, rgba(0,234,255,1) 100%);
+  /*background-color: #13b5ca;*/
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.5em;
   color: white;
@@ -86,7 +91,8 @@ th {
   border: 1px solid white;
   color: white;
   /*white-space: nowrap;*/
-  background-color: rgb(30, 133, 202);
+  /*background-color: rgb(30, 133, 202);*/
+  background: rgba(15,138,238,1) 50%;
   padding: 4px 8px 4px 8px;
 }
 

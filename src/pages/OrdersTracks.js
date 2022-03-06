@@ -22,8 +22,8 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
         headers: { 'Content-Type': 'application/json' },
     });
     if (response.status !== 200) {
-        alert(`Failed to add new customer information, status code = ${response.status}`);
-      }
+        alert(`Failed to add new information to OrdersTracks table, status code = ${response.status}`);
+      }   
     loadOrdersTracks();
   };
 
