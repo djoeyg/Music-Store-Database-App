@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import UserLibrary from './pages/UserLibrary';
 import AllTracks from './pages/AllTracks';
 import AllCustomers from './pages/AllCustomers';
+import InsertCustomer from './pages/InsertCustomer';
 import EditTrackInfo from './pages/EditTrackInfo';
 import UpdateCustomerInfo from './pages/UpdateCustomer';
 import OrderForm from './pages/OrderForm';
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <Route path="/user-library">
           <UserLibrary customerToView={customerToView}/>
+        </Route>
+        <Route path="/new-customer">
+          <InsertCustomer />
         </Route>
         <Route path="/order-tracks">
           <OrderForm />

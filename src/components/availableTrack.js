@@ -18,9 +18,9 @@ function AvailableTrack({ aTrack, onEdit, onDeleteTrack }) {
               <td>{aTrack.trackLength}</td>
               <td>${aTrack.retailPrice}</td>
               <td>{formatedDate}</td>
-              <td><AiFillEdit onClick={() => onEdit(aTrack)}/></td>
-              <td><Link className="App-link" to="/order-tracks">Download</Link></td>
-              <td><BiTrash onClick={() => onDeleteTrack(aTrack.trackID)}/></td>
+              <td><AiFillEdit className="Table-link" onClick={() => onEdit(aTrack)}/></td>
+              <td><Link className="Table-link" to="/order-tracks">Download</Link></td>
+              <td><BiTrash className="Table-link" onClick={() => onDeleteTrack(aTrack.trackID)}/></td>
           </tr>
       </>
     );

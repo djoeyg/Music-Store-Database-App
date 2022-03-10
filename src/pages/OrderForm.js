@@ -2,6 +2,7 @@ import '../App.css';
 import NavBar from '../components/navBarLinks';
 import moment from 'moment';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function OrderForm() {
 
@@ -13,6 +14,16 @@ function OrderForm() {
     const [creditCardNum, setCreditCardNum] = useState('');
     const [creditCardExp, setCreditCardExp] = useState('');
 
+    const history = useHistory();
+
+    // Gets the current date & time
+    // https://zetcode.com/javascript/momentjs/
+
+    const formatedDateTime = () => {
+        let newDateTime = new Date().toLocaleString();
+        return moment(newDateTime).format("YYYY-MM-DD HH:mm:ss");
+    };
+
     const addOrder = async () => {
         const newOrder = { customerID, orderDateTime, orderComplete };
         const response = await fetch('/api/insert-order', {
@@ -23,7 +34,7 @@ function OrderForm() {
             },
         });
         if (response.status === 200) {
-            alert("Successfully added the new order information");
+            /*alert("Successfully added the new order information");*/
         } else {
             alert(`Failed to add new order, status code = ${response.status}`);
         }
@@ -39,23 +50,20 @@ function OrderForm() {
             },
         });
         if (response.status === 200) {
-            alert("Successfully added the new purchase information");
+            /*alert("Successfully added the new purchase information");*/
         } else {
             alert(`Failed to add new purchase, status code = ${response.status}`);
         }
     };
 
-    const orderSubmit = async () => {
+    // Help with updating multiple state variables & function calls happen with an 'onchange event'.
+    // https://stackoverflow.com/questions/54032379/call-two-functions-within-onchange-event-in-react
+    // https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
 
-        // Gets the current date & time
-        // https://zetcode.com/javascript/momentjs/
-        let currentDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
-        console.log(currentDateTime);
-        setOrderDateTime(currentDateTime);
-        setPurchaseDateTime(currentDateTime);
-        setOrderComplete(1);
+    const orderSubmit = async () => {
         addOrder();
         addPurchase();
+        history.push("/orders");
     };
 
     return (
@@ -73,7 +81,10 @@ function OrderForm() {
                                         <input type="text" 
                                         value={customerID}
                                         placeholder="ID value"
-                                        onChange={e => setCustomerID(e.target.value)}/>
+                                        onChange={e => {setCustomerID(e.target.value); 
+                                                        setOrderDateTime(formatedDateTime);
+                                                        setPurchaseDateTime(formatedDateTime);
+                                                        setOrderComplete(1);}}/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +117,7 @@ function OrderForm() {
                             </tbody>
                         </table>
                         <br></br>
-                        <button className='button'
+                        <button className='btn-grad'
                             onClick={orderSubmit}>Submit
                         </button>
                         <br></br>

@@ -43,7 +43,7 @@ function Orders({ setOrderToEdit }) {
     <div className="body">
         <h2>Manage Orders Data</h2>
         <div className="App-header">
-        <Link className="App-link" to="/order-tracks">Add/Insert a new Order</Link>
+        <Link className="Body-link" to="/order-tracks">Add / Insert a new Order</Link>
         <p>Filter Orders by Customer ID#</p>
         <span>
           <input type="text" placeholder="Customer ID#" />   

@@ -43,7 +43,7 @@ function Purchases({ setPurchaseToEdit }) {
     <div className="body">
       <h2>Manage Purchases Data</h2>
         <div className="App-header">
-        <Link className="App-link" to="/order-tracks">Add/Insert a new Purchase</Link>
+        <Link className="Body-link" to="/order-tracks">Add / Insert a new Purchase</Link>
         <p>Filter Purchases by Customer ID#</p>
         <span>
           <input type="text" placeholder="Customer ID#" />   

@@ -39,21 +39,21 @@ function OrderedTrack({ ordTrksInfo, onOrdersTracksUpdate, onDeleteOrderedTrack 
     };
 
     return (
-        <>
-          <tr>
-              <td>{ordTrksInfo.orderedTrackID}</td>
-              <td>{ordTrksInfo.orderID}</td>
-              <td>{displayBool(ordTrksInfo.orderComplete)}</td>
-              <td>{formatedDateTime}</td>
-              <td>{ordTrksInfo.customerID}</td>
-              <td>{displayVal(ordTrksInfo.trackID)}</td>
-              <td>{displayVal(ordTrksInfo.trackTitle)}</td>
-              <td>{displayVal(ordTrksInfo.trackLength)}</td>
-              <td>${displayVal(ordTrksInfo.retailPrice)}</td>
-              <td>{formatedDate(ordTrksInfo.releaseDate)}</td>
-              <td><AiFillEdit onClick={() => onOrdersTracksUpdate(ordTrksInfo)}/></td>
-              <td><BiTrash onClick={() => onDeleteOrderedTrack(ordTrksInfo.orderedTrackID)}/></td>
-          </tr>
+      <>
+        <tr>
+            <td>{ordTrksInfo.orderedTrackID}</td>
+            <td>{ordTrksInfo.orderID}</td>
+            <td>{displayBool(ordTrksInfo.orderComplete)}</td>
+            <td>{formatedDateTime}</td>
+            <td>{ordTrksInfo.customerID}</td>
+            <td>{displayVal(ordTrksInfo.trackID)}</td>
+            <td>{displayVal(ordTrksInfo.trackTitle)}</td>
+            <td>{displayVal(ordTrksInfo.trackLength)}</td>
+            <td>${displayVal(ordTrksInfo.retailPrice)}</td>
+            <td>{formatedDate(ordTrksInfo.releaseDate)}</td>
+            <td><AiFillEdit className="Table-link" onClick={() => onOrdersTracksUpdate(ordTrksInfo)}/></td>
+            <td><BiTrash className="Table-link" onClick={() => onDeleteOrderedTrack(ordTrksInfo.orderedTrackID)}/></td>
+        </tr>
       </>
     );
 }

@@ -31,7 +31,7 @@ function CustomerTrack({ track, onDeleteOrderedTrack }) {
               <td>{displayVal(track.trackLength)}</td>
               <td>${displayVal(track.retailPrice)}</td>
               <td>{formatedDate(track.releaseDate)}</td>
-              <td><BiTrash onClick={() => onDeleteOrderedTrack(track.orderedTrackID, track.customerID)}/></td>
+              <td><BiTrash className="Table-link" onClick={() => onDeleteOrderedTrack(track.orderedTrackID, track.customerID)}/></td>
           </tr>
       </>
     );

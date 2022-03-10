@@ -16,7 +16,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
+  /*background-color: #282c34;*/
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -26,10 +27,39 @@
   color: white;
 }
 
-.App-link, .App-linka:visited {
+.App-link, .App-link:visited {
   /*color: #61dafb;*/
   color: white;
   margin-top: .75em;
+}
+
+.Body-link:link, .Body-link:visited {
+  background-color: black;
+  color: white;
+  margin-top: .75em;
+  /*padding: 14px 25px;*/
+  text-align: center;	
+  text-decoration: none;
+  display: inline-block;
+}
+
+.Body-link:hover, .Body-link:active {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.Table-link, .Table-link:visited {
+  /*color: #61dafb;*/
+  color: white;
+  /*margin-top: .75em;*/
+  text-decoration: none;
+}
+
+.Table-link:hover, .Table-link:active {
+  background-color: white;
+  color: black;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {
@@ -97,8 +127,17 @@ th {
 }
 
 .fieldset {
+  /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(30, 133, 202);*/
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: rgb(30, 133, 202);
+  color: black;
+  font-size: .7em;
+  font-weight: bold;
+  text-align: left;
+  justify-content: center;
+  width: 14em;
+  padding: .2em 0em .2em 0em;
+  margin: .2em .2em .2em .2em;
 }
 
 .form {
@@ -118,13 +157,38 @@ input {
   margin: .2em .2em .2em .2em;
 }
 
+
 button {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: black;
-  font-size: .7em;
-  padding: .2em .2em .2em .2em;
+  font-size: .9em;
+  padding: .0em .2em .1em .2em;
   margin: 20px 15px 0px 15px;
 }
+
+/* https://cssgradient.io/gradient-backgrounds/ */
+
+.btn-grad {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   font-size: .9em;
+   /*text-transform: uppercase;*/
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   /*box-shadow: 0 0 20px #eee;*/
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
 
 span {
   padding: .2em .2em .2em .2em;

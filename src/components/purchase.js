@@ -18,8 +18,8 @@ function Purchase({ purchaseInfo, onPurchaseUpdate, onDeletePurchase }) {
               <td>${purchaseInfo.totalPurchase}</td>
               <td>{purchaseInfo.creditCardNum}</td>
               <td>{purchaseInfo.creditCardExp}</td>
-              <td><AiFillEdit onClick={() => onPurchaseUpdate(purchaseInfo)}/></td>
-              <td><BiTrash onClick={() => onDeletePurchase(purchaseInfo.purchaseID)}/></td>
+              <td><AiFillEdit className="Table-link" onClick={() => onPurchaseUpdate(purchaseInfo)}/></td>
+              <td><BiTrash className="Table-link" onClick={() => onDeletePurchase(purchaseInfo.purchaseID)}/></td>
           </tr>
       </>
     );

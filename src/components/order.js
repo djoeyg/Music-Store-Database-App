@@ -27,8 +27,8 @@ function Order({ orderInfo, onOrderUpdate, onDeleteOrder }) {
               <td>{orderInfo.customerID}</td>
               <td>{formatedDateTime}</td>
               <td>{displayBool(orderInfo.orderComplete)}</td>
-              <td><AiFillEdit onClick={() => onOrderUpdate(orderInfo)}/></td>
-              <td><BiTrash onClick={() => onDeleteOrder(orderInfo.orderID)}/></td>
+              <td><AiFillEdit className="Table-link" onClick={() => onOrderUpdate(orderInfo)}/></td>
+              <td><BiTrash className="Table-link" onClick={() => onDeleteOrder(orderInfo.orderID)}/></td>
           </tr>
       </>
     );

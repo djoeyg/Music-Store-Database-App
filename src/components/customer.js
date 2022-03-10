@@ -20,9 +20,9 @@ function Customer({ custInfo, onUpdate, onView, onDeleteCustomer }) {
               <td>{custInfo.customerState}</td>
               <td>{custInfo.customerZip}</td>
               <td>{custInfo.customerPhone}</td>
-              <td><AiFillEdit onClick={() => onUpdate(custInfo)}/></td>
-              <td><Link className="App-link" onClick={() => onView(custInfo)} to="user-library">View</Link></td>
-              <td><BiTrash onClick={() => onDeleteCustomer(custInfo.customerID)}/></td>
+              <td><AiFillEdit className="Table-link" onClick={() => onUpdate(custInfo)}/></td>
+              <td><Link className="Table-link" onClick={() => onView(custInfo)} to="user-library">View</Link></td>
+              <td><BiTrash className="Table-link" onClick={() => onDeleteCustomer(custInfo.customerID)}/></td>
           </tr>
       </>
     );
