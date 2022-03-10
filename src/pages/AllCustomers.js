@@ -55,8 +55,6 @@ function AllCustomers({ setCustomerToEdit, setCustomerToView }) {
       loadCustomers();
   }, []);
 
-  /* <button onClick={searchCustomer}>Search</button> */
-
   return (
     <>
     <NavBar></NavBar>
