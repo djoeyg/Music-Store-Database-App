@@ -8,6 +8,7 @@ import NavBar from '../components/navBarLinks';
 
 function Orders({ setOrderToEdit }) {
 
+  const [searchTerm, setSearchTerm] = useState('');
   const [allOrders, setOrders] = useState([]);
   const history = useHistory();
 
@@ -46,11 +47,20 @@ function Orders({ setOrderToEdit }) {
         <Link className="Body-link" to="/order-tracks">Add / Insert a new Order</Link>
         <p>Filter Orders by Customer ID#</p>
         <span>
-          <input type="text" placeholder="Customer ID#" />   
-          <button onClick={e => e.preventDefault()}>Search</button>
+        <input type="text" 
+            placeholder="Search..."
+            onChange={e => {setSearchTerm(e.target.value)}}/>
         </span>
         <br></br>
-        <AllOrdersList ordersInfo={allOrders} onOrderUpdate={onOrderUpdate} onDeleteOrder={onDeleteOrder}></AllOrdersList>
+        <AllOrdersList ordersInfo={allOrders.filter(val => {
+              if (searchTerm === '') {
+                return val;
+              } else if (
+                  val.customerID.toString().toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return val;
+              }
+          })} onOrderUpdate={onOrderUpdate} onDeleteOrder={onDeleteOrder}></AllOrdersList>
         <br></br>
         </div>
     </div>

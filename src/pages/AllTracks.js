@@ -14,6 +14,7 @@ function AllTracks({ setTrackToEdit }) {
   const [retailPrice, setRetailPrice] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
 
+  const [searchTerm, setSearchTerm] = useState('');
   const [allTracks, setTracks] = useState([]);
   const history = useHistory();
 
@@ -62,10 +63,11 @@ useEffect(() => {
     <div className="body">
       <h2>All Available Music Tracks</h2>
         <div className="App-header">
-          <p>Search Track by ID#</p>
+          <p>Search Track by matching text</p>
             <span>
-              <input type="text" placeholder="Track ID#" />   
-              <button onClick={e => e.preventDefault()}>Search</button>
+            <input type="text" 
+                placeholder="Search..."
+                onChange={e => {setSearchTerm(e.target.value)}}/>
             </span>
             <div>
             <h4>Insert Information for New Track </h4>
@@ -98,7 +100,19 @@ useEffect(() => {
             >Add to Tracks</button>
             <br></br><br></br>
             </div>
-            <AllTracksList availableTracks={allTracks} onEdit={onEdit} onDeleteTrack={onDeleteTrack}></AllTracksList>
+            <AllTracksList availableTracks={allTracks.filter(val => {
+              if (searchTerm === '') {
+                return val;
+              } else if (
+                  val.trackID.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.trackTitle.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.trackLength.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.retailPrice.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.releaseDate.toString().toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return val;
+              }
+          })} onEdit={onEdit} onDeleteTrack={onDeleteTrack}></AllTracksList>
             <br></br>
         </div>
     </div>

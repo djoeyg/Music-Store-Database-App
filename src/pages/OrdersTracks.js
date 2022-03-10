@@ -11,6 +11,7 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
   const [orderID, setOrderID] = useState('');
   const [trackID, setTrackID] = useState('');
   
+  const [searchTerm, setSearchTerm] = useState('');
   const [allOrdersTracks, setOrdersTracks] = useState([]);
   const history = useHistory();
 
@@ -59,10 +60,11 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
         <div className="body">
           <h2>Orders/Tracks Composite Table</h2>
             <div className="App-header">
-            <p>Search Ordered Tracks by ID#</p>
+            <p>Search Ordered Tracks by the Order ID#</p>
               <span>
-                <input type="text" placeholder="Ordered Track ID#" />   
-                <button onClick={e => e.preventDefault()}>Search</button>
+                <input type="text" 
+                    placeholder="Search..."
+                    onChange={e => {setSearchTerm(e.target.value)}}/>
               </span>
               <div>
                 <h4>Insert New Ordered Track Information</h4>
@@ -86,7 +88,15 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
                 <br></br>
               </div>
               <br></br>
-              <AllOrdersTracksList ordersTracksInfo={allOrdersTracks} onOrdersTracksUpdate={onOrdersTracksUpdate} onDeleteOrderedTrack={onDeleteOrderedTrack}></AllOrdersTracksList>
+              <AllOrdersTracksList ordersTracksInfo={allOrdersTracks.filter(val => {
+              if (searchTerm === '') {
+                return val;
+              } else if (
+                  val.orderID.toString().toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return val;
+              }
+          })} onOrdersTracksUpdate={onOrdersTracksUpdate} onDeleteOrderedTrack={onDeleteOrderedTrack}></AllOrdersTracksList>
               <br></br>
             </div>
           <br></br>

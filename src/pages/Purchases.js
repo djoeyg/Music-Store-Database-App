@@ -8,6 +8,7 @@ import NavBar from '../components/navBarLinks';
 
 function Purchases({ setPurchaseToEdit }) {
 
+  const [searchTerm, setSearchTerm] = useState('');
   const [allPurchases, setPurchases] = useState([]);
   const history = useHistory();
 
@@ -46,11 +47,20 @@ function Purchases({ setPurchaseToEdit }) {
         <Link className="Body-link" to="/order-tracks">Add / Insert a new Purchase</Link>
         <p>Filter Purchases by Customer ID#</p>
         <span>
-          <input type="text" placeholder="Customer ID#" />   
-          <button onClick={e => e.preventDefault()}>Search</button>
+        <input type="text" 
+            placeholder="Search..."
+            onChange={e => {setSearchTerm(e.target.value)}}/>
         </span>
         <br></br>
-        <AllPurchasesList purchasesInfo={allPurchases} onPurchaseUpdate={onPurchaseUpdate} onDeletePurchase={onDeletePurchase}></AllPurchasesList>
+        <AllPurchasesList purchasesInfo={allPurchases.filter(val => {
+              if (searchTerm === '') {
+                return val;
+              } else if (
+                  val.customerID.toString().toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return val;
+              }
+          })} onPurchaseUpdate={onPurchaseUpdate} onDeletePurchase={onDeletePurchase}></AllPurchasesList>
         <br></br>
         </div>
     </div>

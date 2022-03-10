@@ -194,9 +194,3 @@ function InsertCustomer() {
 };
 
 export default InsertCustomer;
-
-/*<input
-type="text"
-value={customerState}
-placeholder="State"
-onChange={e => setState(e.target.value)} />*/

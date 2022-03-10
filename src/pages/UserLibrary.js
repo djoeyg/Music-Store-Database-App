@@ -1,5 +1,6 @@
 import '../App.css';
 /*import customerTracks from '../data/customerTracksData.js';*/
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import CustomerPlayList from '../components/customerPlayList';
 import NavBar from '../components/navBarLinks';
@@ -43,6 +44,7 @@ function UserLibrary({ customerToView }) {
         <div className="App-header">
             <CustomerPlayList playListTracks={customerTracks} onDeleteOrderedTrack={onDeleteOrderedTrack}></CustomerPlayList>
         </div>
+        <Link className="App-link" to="/all-customers">Return to Customers Page</Link>
     </div>
     </>
   );

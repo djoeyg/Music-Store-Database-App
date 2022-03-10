@@ -56,7 +56,7 @@ function OrderForm() {
         }
     };
 
-    // Help with updating multiple state variables & function calls happen with an 'onchange event'.
+    // Help with updating multiple state variables & function calls with an 'onchange event'.
     // https://stackoverflow.com/questions/54032379/call-two-functions-within-onchange-event-in-react
     // https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
 
