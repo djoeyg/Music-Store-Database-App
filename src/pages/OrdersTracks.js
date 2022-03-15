@@ -5,6 +5,8 @@ import NavBar from '../components/navBarLinks';
 import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AllOrdersTracksList from '../components/allOrdersTracksList';
+import OrderSelectFill from '../components/orderSelectFill';
+import TrackSelectFill from '../components/trackSelectFill';
 
 function OrdersTracks({ setOrderedTrackToEdit }) {
 
@@ -68,17 +70,22 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
               </span>
               <div>
                 <h4>Insert New Ordered Track Information</h4>
-                <input
-                    type="text"
-                    value={orderID}
-                    placeholder="Order ID#"
-                    onChange={e => setOrderID(e.target.value)} />
-
-                <input
-                    type="text"
-                    value={trackID}
-                    placeholder="Track ID#"
-                    onChange={e => setTrackID(e.target.value)} />
+                <select class="fieldset"
+                        type="number"
+                        id="order"
+                        value={orderID}
+                        onChange={e => setOrderID(e.target.value)}>
+                        <option value=''>Select Order ID</option>
+                        <OrderSelectFill />
+                </select>
+                <select class="fieldset"
+                        type="number"
+                        id="track"
+                        value={trackID}
+                        onChange={e => setTrackID(e.target.value)}>
+                        <option value='NUll'>Null</option>
+                        <TrackSelectFill />
+                </select>
 
                 <br></br>
 
@@ -106,6 +113,18 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
 }
 
 export default OrdersTracks;
+
+/* <input
+    type="text"
+    value={orderID}
+    placeholder="Order ID#"
+    onChange={e => setOrderID(e.target.value)} /> */
+
+/* <input
+    type="text"
+    value={trackID}
+    placeholder="Track ID#"
+    onChange={e => setTrackID(e.target.value)} /> */
 
 /*
   const [orderComplete, setOrderComplete] = useState('')

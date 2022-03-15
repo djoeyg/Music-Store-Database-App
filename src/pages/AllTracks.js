@@ -80,19 +80,19 @@ useEffect(() => {
             <input
                 type="text"
                 value={trackLength}
-                placeholder="Track Length"
+                placeholder="Track Length hh:mm:ss"
                 onChange={e => setTrackLength(e.target.value)} />
             
             <input
                 type="text"
                 value={retailPrice}
-                placeholder="Price"
+                placeholder="Price $0.00"
                 onChange={e => setRetailPrice(e.target.value)} />    
 
             <input
                 type="text"
                 value={releaseDate}
-                placeholder="Release Date"
+                placeholder="Release Date YYYY-MM-DD"
                 onChange={e => setReleaseDate(e.target.value)} />
             
             <button

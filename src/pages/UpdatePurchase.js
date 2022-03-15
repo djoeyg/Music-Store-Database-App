@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Link, useHistory } from 'react-router-dom';
+import CustomerSelectFill from '../components/customerSelectFill';
 
 export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
 
@@ -16,6 +17,7 @@ export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
     const [creditCardNum, setCreditCardNum] = useState(purchaseToEdit.creditCardNum);
     const [creditCardExp, setCreditCardExp] = useState(purchaseToEdit.creditCardExp);
 
+    const [customer, setCustomer] = useState([]);
     const history = useHistory();
 
     const editPurchase = async () => {
@@ -23,9 +25,7 @@ export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
         const response = await fetch(`/api/update-purchase/${_id}`, {
             method: 'PUT',
             body: JSON.stringify(editedPurchase),
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json', },
         });
         if (response.status === 200) {
             alert("Purchase information successfully updated");
@@ -34,6 +34,21 @@ export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
         }
         history.push("/purchases");
     };
+    
+    const searchCustomer = async inputID => {
+        const _id = inputID
+        const response = await fetch(`/api/get-customer/${_id}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        });
+        const customer = await response.json();
+        setCustomer(customer);
+    };
+
+    useEffect(() => {
+        searchCustomer(customerID);
+        console.log(customer);
+    });
 
     return (
       <div className="body">
@@ -45,11 +60,14 @@ export const UpdatePurchaseInfo = ({ purchaseToEdit }) => {
             <table className="table">
                 <tbody>
                     <tr>
-                        <td>Customer ID#:</td>
-                        <td><input
-                                type="text"
-                                value={customerID}
-                                onChange={e => setCustomerID(e.target.value)} /></td>
+                        <td>Customer:</td>
+                        <td><select class="fieldset"
+                                        type="number"
+                                        id="customer"
+                                        value={customerID}
+                                        onChange={e => setCustomerID(e.target.value)}>
+                                        <CustomerSelectFill />
+                                        </select></td>
                     </tr>
                     <tr>
                         <td>Purchase Date &amp; TIme:</td>

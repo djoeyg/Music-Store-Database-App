@@ -1,5 +1,6 @@
 import '../App.css';
 import NavBar from '../components/navBarLinks';
+import CustomerSelectFill from '../components/customerSelectFill';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -76,23 +77,27 @@ function OrderForm() {
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <td>Customer ID#:</td>
+                                    <td>Select Customer:</td>
                                     <td>
-                                        <input type="text" 
+                                        <select class="fieldset"
+                                        type="number"
+                                        id="customer"
                                         value={customerID}
-                                        placeholder="ID value"
                                         onChange={e => {setCustomerID(e.target.value); 
                                                         setOrderDateTime(formatedDateTime);
                                                         setPurchaseDateTime(formatedDateTime);
-                                                        setOrderComplete(1);}}/>
+                                                        }}>
+                                        <option value=''></option>
+                                        <CustomerSelectFill />
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Total Purchase Amout:</td>
+                                    <td>Purchase Amount:</td>
                                     <td>
                                         <input type="text" 
                                         value={totalPurchase}
-                                        placeholder="Total Purchase"
+                                        placeholder="$0.00"
                                         onChange={e => setTotalPurchase(e.target.value)}/>
                                     </td>
                                 </tr>
@@ -110,8 +115,21 @@ function OrderForm() {
                                     <td>
                                         <input type="text"
                                         value={creditCardExp} 
-                                        placeholder="MM / YYYY"
+                                        placeholder="MM/YYYY"
                                         onChange={e => setCreditCardExp(e.target.value)}/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Order Complete:</td>
+                                    <td><select 
+                                        class="fieldset"
+                                        type="number"
+                                        id="orderComplete"
+                                        value={orderComplete}
+                                        onChange={e => setOrderComplete(e.target.value)}>
+                                            <option value='0'>No</option>
+                                            <option value='1'>Yes</option>
+                                        </select>
                                     </td>
                                 </tr>
                             </tbody>
@@ -128,3 +146,16 @@ function OrderForm() {
 }
 
 export default OrderForm;
+
+/*  <tr>
+        <td>Customer ID#:</td>
+        <td>
+            <input type="text" 
+            value={customerID}
+            placeholder="ID value"
+            onChange={e => {setCustomerID(e.target.value); 
+                            setOrderDateTime(formatedDateTime);
+                            setPurchaseDateTime(formatedDateTime);
+                            setOrderComplete(1);}}/>
+        </td>
+    </tr> */
