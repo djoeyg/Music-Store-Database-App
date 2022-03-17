@@ -3,6 +3,21 @@ import NavBar from '../components/navBarLinks';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+// form validation technique from 'React Forms Handling & Validation Tutorial':
+// https://youtu.be/EYpdEYK25Dc
+
+// regex email validation:
+// https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript
+
+// regex phone number validation:
+// https://stackoverflow.com/questions/31143315/regex-phone-number-with-dashes
+
+// regex zip code validation:
+// https://stackoverflow.com/questions/160550/zip-code-us-postal-code-validation
+
+// regex ip address validation:
+// https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
+
 // 50 States dropdown select data from:
 // https://www.freeformatter.com/usa-state-list-html-select.html
 
@@ -18,6 +33,9 @@ function InsertCustomer() {
     const [customerEmail, setEmail] = useState('');
     const [customerPhone, setPhone] = useState('');
 
+    const formValues = { ipAddress, customerFirstName, customerLastName, customerStreet, customerCity, customerState, customerZip, customerEmail, customerPhone };
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [formErrors, SetFormErrors] = useState({});
     const history = useHistory();
 
     const addCustomer = async () => {
@@ -27,11 +45,69 @@ function InsertCustomer() {
             body: JSON.stringify(newCustomer),
             headers: { 'Content-Type': 'application/json' },
         });
-        if (response.status !== 200) {
-            alert(`Failed to add new customer information, status code = ${response.status}`);
-          }
-        history.push("/all-customers");
-    };  
+        if (response.status === 200) {
+            /*alert("Customer information successfully added");*/
+            console.log(response.status);
+            history.push("/all-customers");
+        } else {
+            alert(`Unable to add new customer information, status code = ${response.status}`);
+        }
+    }; 
+
+    const validate = (values) => {
+        const errors = {};
+        const ipRegEx = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        const phoneRegEx = /^(1-)?\d{3}-\d{3}-\d{4}$/;
+        const zipRegEx = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+        if (!values.customerFirstName) {
+            errors.firstName = "Required";
+        }
+        if (!values.customerLastName) {
+            errors.lastName = "Required";
+        }
+        if (!values.customerStreet) {
+            errors.street = "Required";
+        }
+        if (!values.customerCity) {
+            errors.city = "Required";
+        }
+        if (!values.customerState) {
+            errors.state = "Required";
+        }
+        if (!values.customerZip) {
+            errors.noZipCode = "Required";
+        } else if (!zipRegEx.test(values.customerZip)) {
+            errors.invalidZipCode = "Invalid Zip Code";
+        }
+        if (!values.customerPhone) {
+            errors.noPhone = "Required";
+        } else if (!phoneRegEx.test(values.customerPhone)) {
+            errors.invalidPhone = "Invalid Phone Number";
+        }
+        if (!values.customerEmail) {
+            errors.noEmail = "Required";
+        } else if (!emailRegEx.test(values.customerEmail)) {
+            errors.invalidEmail = "Invalid Email format";
+        }
+        if (!values.ipAddress) {
+            errors.ipAddress = "Required";
+        } else if (!ipRegEx.test(values.ipAddress)) {
+            errors.invalidIpAddress = "Invalid IP Address";
+        }
+        return errors;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        SetFormErrors(validate(formValues));
+        setIsSubmit(true);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            addCustomer();
+            setIsSubmit(false);
+        };
+    };     
 
     return (
         <>
@@ -43,7 +119,7 @@ function InsertCustomer() {
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <td>First Name:</td>
+                                    <td>First Name:<p class="form-error">{formErrors.firstName}</p></td>
                                     <td>
                                         <input
                                             type="text"
@@ -53,7 +129,7 @@ function InsertCustomer() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Last Name:</td>
+                                    <td>Last Name:<p class="form-error">{formErrors.lastName}</p></td>
                                     <td>
                                         <input
                                             type="text"
@@ -63,7 +139,7 @@ function InsertCustomer() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Street:</td>
+                                    <td>Street:<p class="form-error">{formErrors.street}</p></td>
                                     <td>
                                         <input
                                             type="text"
@@ -73,7 +149,7 @@ function InsertCustomer() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>City:</td>
+                                    <td>City:<p class="form-error">{formErrors.city}</p></td>
                                     <td>
                                         <input
                                             type="text"
@@ -83,9 +159,10 @@ function InsertCustomer() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>State:</td>
+                                    <td>State:<p class="form-error">{formErrors.state}</p></td>
                                     <td>
-                                        <select class="fieldset" value={customerState} placeholder="State" onChange={e => setState(e.target.value)}>
+                                        <select class="fieldset" value={customerState} onChange={e => setState(e.target.value)}>
+                                            <option value="">-- Select State --</option>
                                             <option value="AL">Alabama</option>
                                             <option value="AK">Alaska</option>
                                             <option value="AZ">Arizona</option>
@@ -141,50 +218,54 @@ function InsertCustomer() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Zip Code:</td>
+                                    <td>Zip Code:<p class="form-error">{formErrors.noZipCode}</p></td>
                                     <td>
                                         <input
                                             type="text"
                                             value={customerZip}
-                                            placeholder="Zip Code"
+                                            placeholder="e.g. 99999"
                                             onChange={e => setZipCode(e.target.value)} />
+                                        <p class="form-error">{formErrors.invalidZipCode}</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Phone:</td>
+                                    <td>Phone:<p class="form-error">{formErrors.noPhone}</p></td>
                                     <td>
                                         <input
                                             type="text"
                                             value={customerPhone}
-                                            placeholder="Phone Number"
+                                            placeholder="e.g. 999-999-9999"
                                             onChange={e => setPhone(e.target.value)} />
+                                        <p class="form-error">{formErrors.invalidPhone}</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Email:</td>
+                                    <td>Email:<p class="form-error">{formErrors.noEmail}</p></td>
                                     <td>
                                         <input
                                             type="text"
                                             value={customerEmail}
-                                            placeholder="Email"
+                                            placeholder="example@email.com"
                                             onChange={e => setEmail(e.target.value)} />
+                                        <p class="form-error">{formErrors.invalidEmail}</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>IP Address:</td>
+                                    <td>IP Address:<p class="form-error">{formErrors.ipAddress}</p></td>
                                     <td>
                                         <input
                                             type="text"
                                             value={ipAddress}
-                                            placeholder="IP Address"
+                                            placeholder="0.0.0.0"
                                             onChange={e => setIpAddress(e.target.value)} />
+                                        <p class="form-error">{formErrors.invalidIpAddress}</p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <br></br>
                         <button className='btn-grad'
-                            onClick={addCustomer}>Submit
+                            onClick={handleSubmit}>Submit
                         </button>
                         <br></br>
                     </div>

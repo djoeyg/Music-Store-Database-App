@@ -63,12 +63,11 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
           <h2>Orders/Tracks Composite Table</h2>
             <div className="App-header">
             <p>Search Ordered Tracks by the Order ID#</p>
-              <span>
+              <div>
                 <input type="text" 
                     placeholder="Search..."
                     onChange={e => {setSearchTerm(e.target.value)}}/>
-              </span>
-              <div>
+  
                 <h4>Insert New Ordered Track Information</h4>
                 <select class="fieldset"
                         type="number"
@@ -83,11 +82,11 @@ function OrdersTracks({ setOrderedTrackToEdit }) {
                         id="track"
                         value={trackID}
                         onChange={e => setTrackID(e.target.value)}>
-                        <option value='NUll'>Null</option>
+                        <option value='Null'>Null</option>
                         <TrackSelectFill />
                 </select>
 
-                <br></br>
+                <br></br><br></br>
 
                 <button
                     onClick={AddOrderedTrack}

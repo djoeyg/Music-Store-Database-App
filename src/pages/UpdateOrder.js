@@ -14,7 +14,11 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
 
     const [customerID, setCustomerID] = useState(orderToEdit.customerID);
     const [orderDateTime, setOrderDateTime] = useState(formatedDateTime);
-    const [orderComplete, setComplete] = useState(orderToEdit.orderComplete);
+    const [orderComplete, setComplete] = useState('');
+
+    const formValues = { orderDateTime, orderComplete };
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [formErrors, SetFormErrors] = useState({});
 
     const [customer, setCustomer] = useState([]);
     const history = useHistory();
@@ -29,11 +33,11 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
             },
         });
         if (response.status === 200) {
-            alert("Order information successfully updated");
+            /*alert("Order information successfully updated");*/
+            history.push("/orders");
         } else {
-            alert(`Failed to update order information, status code = ${response.status}`);
+            alert(`Unable to update order information, status code = ${response.status}`);
         }
-        history.push("/orders");
     };
 
     const searchCustomer = async inputID => {
@@ -50,6 +54,35 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
         searchCustomer(customerID);
         console.log(customer);
     });
+
+    const validate = (values) => {
+
+        // regex date & time validation:
+        // https://regexlib.com/REDetails.aspx?regexp_id=1824
+
+        const errors = {};
+        const dateTimeRegEx = /^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$/;
+        
+        if (!values.orderComplete) {
+            errors.complete = "Required";
+        }
+        if (!values.orderDateTime) {
+            errors.dateTime = "Required";
+        } else if (!dateTimeRegEx.test(values.orderDateTime)) {
+            errors.invalidDateTime = "Invalid Date or Time";
+        }
+        return errors;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        SetFormErrors(validate(formValues));
+        setIsSubmit(true);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            editOrder();
+            setIsSubmit(false);
+        };
+    };
 
     /*function displayBool(value) {
         let outVal;
@@ -73,16 +106,6 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
         return outVal;
     };*/
 
-    /* <tr>
-        <td>Order Complete:</td>
-        <td>
-            <input
-                type="text"
-                value={orderComplete}
-                onChange={e => setComplete(e.target.value)} />
-        </td>
-    </tr> */
-
     return (
       <div className="body">
         <h1>Update Order Information</h1>
@@ -105,21 +128,23 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Order Date &amp; TIme:</td>
+                        <td>Order Date &amp; Time:<p class="form-error">{formErrors.dateTime}</p></td>
                         <td><input
                                 type="text"
                                 value={orderDateTime}
                                 onChange={e => setOrderDateTime(e.target.value)} />
+                            <p class="form-error">{formErrors.invalidDateTime}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td>Order Complete:</td>
+                        <td>Order Complete:<p class="form-error">{formErrors.complete}</p></td>
                         <td><select 
                                 class="fieldset"
                                 type="number"
                                 id="customer"
                                 value={orderComplete}
                                 onChange={e => setComplete(e.target.value)}>
+                                    <option value=''>-- Select --</option>
                                     <option value='0'>No</option>
                                     <option value='1'>Yes</option>
                             </select>
@@ -130,7 +155,7 @@ export const UpdateOrderInfo = ({ orderToEdit }) => {
             
             <br></br>
             <button
-                onClick={editOrder}>Save Changes to Order
+                onClick={handleSubmit}>Save Changes to Order
             </button>
             <br></br>
         </div>

@@ -20,11 +20,11 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
             headers: { 'Content-Type': 'application/json', },
         });
         if (response.status === 200) {
-            alert("Orders/Tracks successfully updated");
+            /*alert("Orders/Tracks successfully updated");*/
+            history.push("/orders-tracks");
         } else {
-            alert(`Failed to update Orders/Tracks, status code = ${response.status}`);
+            alert(`Unalbe to update Orders/Tracks, status code = ${response.status}`);
         }
-        history.push("/orders-tracks");
     };
 
     const loadOrdersTracks = async () => {
@@ -45,9 +45,7 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
       <div className="body">
         <h1>Update Orders/Tracks Information</h1>
         <div className="App-header">
-            
             <br></br>
-            
             <table className="table">
                 <tbody>
                     <tr>
@@ -78,7 +76,6 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
                     </tr>
                 </tbody>
             </table> 
-            
             <br></br>
             <button
                 onClick={editOrderedTrack}>Save Changes to Orders/Tracks

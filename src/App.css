@@ -18,6 +18,7 @@
 .App-header {
   background-color: black;
   /*background-color: #282c34;*/
+  block-size: fit-content;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -72,7 +73,7 @@
 }
 
 .body {
-  height: 100vh;
+  min-height: 100vh;
   /* https://cssgradient.io/ */
   background: rgb(129,231,173);
   background: linear-gradient(90deg, rgba(129,231,173,1) 0%, rgba(15,138,238,1) 50%, rgba(0,234,255,1) 100%);
@@ -92,7 +93,7 @@ h1, h2, h3, h4, p {
   margin: 10px;
 }
 
-.table, thead {
+table, thead {
   table-layout:auto;
   border-collapse: collapse;
   border: 1px solid white;
@@ -115,6 +116,19 @@ td {
   border: 1px solid white;
   white-space: nowrap;
   padding: 4px 8px 4px 8px;
+}
+
+#anti-td {
+  border: none;
+  white-space: nowrap;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  /*margin: none !important;
+  padding: 0px 2px 0px 2px!important;*/
+  width: 14em;
+  height: 1em;
+  padding: .2em .1em .2em .1em;
+  margin: .2em .2em .1em .2em;
 }
 
 th {
@@ -145,6 +159,13 @@ th {
   color: rgb(30, 133, 202);
 }
 
+.form-error {
+  color: rgb(255, 0, 242);
+  font-size: .7em;
+  padding: 0em;
+  margin: 0em;
+}
+
 input {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: black;
@@ -162,8 +183,8 @@ button {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: black;
   font-size: .9em;
-  padding: .0em .2em .1em .2em;
-  margin: 20px 15px 0px 15px;
+  /*padding: .0em .2em .1em .2em;
+  margin: 20px 15px 0px 15px;*/
 }
 
 /* https://cssgradient.io/gradient-backgrounds/ */

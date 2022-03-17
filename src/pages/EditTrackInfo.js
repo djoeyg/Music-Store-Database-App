@@ -16,6 +16,9 @@ export const EditTrackInfo = ({ trackToEdit }) => {
     const [retailPrice, setRetailPrice] = useState(trackToEdit.retailPrice);
     const [releaseDate, setReleaseDate] = useState(formatedDate);
 
+    const formValues = { trackTitle, trackLength, retailPrice, releaseDate };
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [formErrors, SetFormErrors] = useState({});
     const history = useHistory();
 
     const editTrack = async () => {
@@ -28,11 +31,48 @@ export const EditTrackInfo = ({ trackToEdit }) => {
             },
         });
         if (response.status === 200) {
-            alert("Track information successfully updated");
+            /*alert("Track information successfully updated");*/
+            history.push("/all-tracks");
         } else {
-            alert(`Failed to update track information, status code = ${response.status}`);
+            alert(`Unable to update track information, status code = ${response.status}`);
         }
-        history.push("/all-tracks");
+    };
+
+    const validate = (values) => {
+
+        // regex time validation:
+        // https://stackoverflow.com/questions/8318236/regex-pattern-for-hhmmss-time-string
+    
+        // regex date validation:
+        // https://stackoverflow.com/questions/22061723/regex-date-validation-for-yyyy-mm-dd
+    
+        const errors = {};
+        const timeRegEx = /^$|^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
+        const dateRegEx = /^$|^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
+        
+        if (!values.trackTitle) {
+            errors.title = "Required";
+        }
+        if (values.retailPrice < 0 | values.retailPrice > 9.99) {
+            errors.invalidPrice = "Invalid Dollar Amount";
+        }
+        if (!timeRegEx.test(values.trackLength)) {
+          errors.invalidtime = "Invalid Time Value";
+        }
+        if (!dateRegEx.test(values.releaseDate)) {
+          errors.invalidDate = "Invalid Date Value";
+        }
+        return errors;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        SetFormErrors(validate(formValues));
+        setIsSubmit(true);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            editTrack();
+            setIsSubmit(false);
+        };
     };
 
     return (
@@ -45,39 +85,46 @@ export const EditTrackInfo = ({ trackToEdit }) => {
             <table className="table">
                 <tbody>
                     <tr>
-                        <td>Track Title:</td>
+                        <td>Track Title:<p class="form-error">{formErrors.title}</p></td>
                         <td><input
                                 type="text"
                                 value={trackTitle}
-                                onChange={e => setTrackTitle(e.target.value)} /></td>
+                                onChange={e => setTrackTitle(e.target.value)} />
+                        </td>
                     </tr>
                     <tr>
                         <td>Length:</td>
                         <td><input
                                 type="text"
                                 value={trackLength}
-                                onChange={e => setTrackLength(e.target.value)} /></td>
+                                onChange={e => setTrackLength(e.target.value)} />
+                            <p class="form-error">{formErrors.invalidtime}</p>
+                        </td>
                     </tr>
                     <tr>
                         <td>Retail Price:</td>
                         <td><input
                                 type="text"
                                 value={retailPrice}
-                                onChange={e => setRetailPrice(e.target.value)} /></td> 
+                                onChange={e => setRetailPrice(e.target.value)} />
+                            <p class="form-error">{formErrors.invalidPrice}</p>
+                        </td> 
                     </tr>
                     <tr>
                         <td>Release Date:</td>
                         <td><input
                                 type="text"
                                 value={releaseDate}
-                                onChange={e => setReleaseDate(e.target.value)} /></td>
+                                onChange={e => setReleaseDate(e.target.value)} />
+                            <p class="form-error">{formErrors.invalidDate}</p>
+                        </td>
                     </tr>
                 </tbody>
             </table> 
             
             <br></br>
             <button
-                onClick={editTrack}>Save Changes to Track Info
+                onClick={handleSubmit}>Save Changes to Track Info
             </button>
             <br></br>
         </div>

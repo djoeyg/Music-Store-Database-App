@@ -38,8 +38,17 @@ function OrderedTrack({ ordTrksInfo, onOrdersTracksUpdate, onDeleteOrderedTrack 
         return outVal;
     };
 
+    function display$(value) {
+        let outVal;
+        if (value === null) {
+            outVal = "Null";
+        } else 
+            outVal = '$' + value;
+        return outVal;
+    };
+
     return (
-      <>
+    <>
         <tr>
             <td>{ordTrksInfo.orderedTrackID}</td>
             <td>{ordTrksInfo.orderID}</td>
@@ -49,7 +58,7 @@ function OrderedTrack({ ordTrksInfo, onOrdersTracksUpdate, onDeleteOrderedTrack 
             <td>{displayVal(ordTrksInfo.trackID)}</td>
             <td>{displayVal(ordTrksInfo.trackTitle)}</td>
             <td>{displayVal(ordTrksInfo.trackLength)}</td>
-            <td>${displayVal(ordTrksInfo.retailPrice)}</td>
+            <td>{display$(ordTrksInfo.retailPrice)}</td>
             <td>{formatedDate(ordTrksInfo.releaseDate)}</td>
             <td><AiFillEdit className="Table-link" onClick={() => onOrdersTracksUpdate(ordTrksInfo)}/></td>
             <td><BiTrash className="Table-link" onClick={() => onDeleteOrderedTrack(ordTrksInfo.orderedTrackID)}/></td>
