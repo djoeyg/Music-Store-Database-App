@@ -69,7 +69,7 @@ export const UpdateOrdersTracksInfo = ({ orderedTrackToEdit }) => {
                                 id="track"
                                 value={trackID}
                                 onChange={e => setTrackID(e.target.value)}>
-                                <option value='NUll'>Null</option>
+                                <option value=''>Null</option>
                                 <TrackSelectFill />
                             </select>
                         </td>
